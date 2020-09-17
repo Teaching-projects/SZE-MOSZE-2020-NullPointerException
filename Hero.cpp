@@ -1,37 +1,21 @@
-#include <string>
-#include <iostream>
 #include "Hero.h"
 
 
-Hero::Hero(const std::string name, const int hp, const int dmg) : name(name), hp(hp), dmg(dmg){
-    this->name = name;
-    this->hp = hp;
-    this->dmg = dmg;
-}
 
-std::string Hero::getName(){
+Hero::Hero(const std::string& name, int hp, const int dmg) : name(name), hp(hp), dmg(dmg){}
+
+const std::string& Hero::getName(){
     return name;
     
 }
-void Hero::setName(std::string name){
-    this->name = name;
-    
-}
-int Hero::getHP(){
+
+const int& Hero::getHP(){
     return hp;
     
 }
-void Hero::setHP(int hp){
-    this->hp = hp;
-    
-}
-int Hero::getDmg(){
+
+const int& Hero::getDmg(){
     return dmg;
-    
-}
-void Hero::setDmg(int dmg){
-    this->dmg = dmg;
-    
 }
 
 bool Hero::isDead(){
@@ -45,7 +29,6 @@ bool Hero::isDead(){
 
 void Hero::damaging(Hero *enemy){
     if(hp > 0){
-        std::cout << name << " is damaging "<< enemy->name << " with: " << dmg << " dmg" << std::endl;
         if((enemy->hp - dmg) > 0){
             enemy->hp -= dmg;
         }else{
@@ -54,7 +37,5 @@ void Hero::damaging(Hero *enemy){
     }
     
 }
-
-Hero::~Hero(){}
 
 
