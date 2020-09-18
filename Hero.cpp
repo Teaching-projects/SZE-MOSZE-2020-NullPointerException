@@ -4,17 +4,17 @@
 
 Hero::Hero(const std::string& name, int hp, const int dmg) : name(name), hp(hp), dmg(dmg){}
 
-const std::string& Hero::getName(){
+const std::string& Hero::getName() const{
     return name;
     
 }
 
-const int& Hero::getHP(){
+int Hero::getHP() const{
     return hp;
     
 }
 
-const int& Hero::getDmg(){
+int Hero::getDmg() const{
     return dmg;
 }
 

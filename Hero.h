@@ -1,7 +1,7 @@
 #ifndef Hero_h
 #define Hero_h
 #include <string>
-#include <iostream>
+
 
 class Hero{
 private:
@@ -13,9 +13,9 @@ public:
     //Ctor, Dtor
     Hero(const std::string&, int, const int);
     //Karakter Alapadatok, Get-Set - Név, HP, DMG
-    const std::string& getName();
-    const int& getHP();
-    const int& getDmg();
+    const std::string& getName() const;
+    int getHP() const;
+    int getDmg() const;
     bool isDead();
     void damaging(Hero *enemy);
     

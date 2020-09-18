@@ -1,16 +1,10 @@
 #include "Hero.h"
+#include <iostream>
 
-
-
-const void firstCoutStatus(Hero& warrior){
+void firstCoutStatus(const Hero& warrior){
     std::cout << "Warrior: "<< warrior.getName() << std::endl
     << "Health: " << warrior.getHP() << std::endl
     << "Damage: " << warrior.getDmg() << std::endl << std::endl;
-}
-
-const void getBattleStatus(Hero& warrior1, Hero& warrior2){
-    std::cout << warrior1.getName() << " HP: " << warrior1.getHP() << std::endl;
-    std::cout << warrior2.getName() << " HP: " << warrior2.getHP() << std::endl;
 }
 
 int main(int argc, const char * argv[]) {
@@ -40,26 +34,18 @@ int main(int argc, const char * argv[]) {
     //A játék lefolyása
     while(!warrior2->isDead() && !warrior1->isDead()){
         
-        if(!warrior1->isDead()){
-            warrior1->damaging(warrior2);
-            std::cout << warrior1->getName() << " is damaging "<< warrior2->getName() << " with: " << warrior1->getDmg() << " dmg" << std::endl;
-            getBattleStatus(*warrior1, *warrior2);
-        }
+        warrior1->damaging(warrior2);
+        std::cout << warrior1->getName() << "->"<< warrior2->getName() << std::endl;
+        warrior2->damaging(warrior1);
+        std::cout << warrior2->getName() << "->"<< warrior1->getName() << std::endl;
         
-        
-        if(!warrior2->isDead()){
-            warrior2->damaging(warrior1);
-            std::cout << warrior1->getName() << " is damaging "<< warrior2->getName() << " with: " << warrior1->getDmg() << " dmg" << std::endl;
-            getBattleStatus(*warrior1, *warrior2);
-        }
-    
+        std::cout << warrior1->getName() << " HP: " << warrior1->getHP() << std::endl << warrior2->getName() << " HP: " << warrior2->getHP() << std::endl;
     }
+    
     
     if(warrior1->isDead()){
         std::cout << warrior1->getName() << " is dead. " << warrior2->getName() << " wins. " << std::endl;
-    }
-    
-    if(warrior2->isDead()){
+    }else{
         std::cout << warrior2->getName() << " is dead. " << warrior1->getName() << " wins. " << std::endl;
     }
     
