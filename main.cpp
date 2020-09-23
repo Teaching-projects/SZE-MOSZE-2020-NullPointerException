@@ -13,18 +13,18 @@ int main(int argc, const char * argv[]) {
     Hero *warrior2;
     
     try {
-        if(argc == 7){
+        if(argc == 3){
             
-            warrior1 = new Hero(argv[1], std::stoi(argv[2]), std::stoi(argv[3]));
-            warrior2 = new Hero(argv[4], std::stoi(argv[5]), std::stoi(argv[6]));
-            
+            warrior1 = new Hero(Hero::parseUnit(argv[1]));
+            warrior2 = new Hero(Hero::parseUnit(argv[2]));
         }else{
-            std::cout << "Bad inputs. Initializing default parameters." << std::endl;
+            std::cout << "Bad arg inputs. Initializing default parameters." << std::endl;
             warrior1 = new Hero("Superman", 150, 20);
             warrior2 = new Hero("Batman", 200, 30);
         }
     } catch (std::exception& e) {
-        std::cout << "Bad inputs. Initializing default parameters.";
+        std::cout << "Bad inputs or file not exists. Initializing default parameters."
+        << std::endl;
         warrior1 = new Hero("Superman", 150, 20);
         warrior2 = new Hero("Batman", 200, 30);
     }
