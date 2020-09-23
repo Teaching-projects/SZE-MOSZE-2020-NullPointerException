@@ -6,6 +6,11 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1BA40A05251BAA570052050B /* Hero.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1BA40A01251BAA560052050B /* Hero.cpp */; };
+		1BA40A06251BAA570052050B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1BA40A04251BAA570052050B /* main.cpp */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		1B26BAFB251BA8150058F388 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -20,6 +25,10 @@
 
 /* Begin PBXFileReference section */
 		1B26BAFD251BA8150058F388 /* mosze-rpg-game */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "mosze-rpg-game"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1BA40A01251BAA560052050B /* Hero.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hero.cpp; sourceTree = "<group>"; };
+		1BA40A02251BAA560052050B /* Hero.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hero.h; sourceTree = "<group>"; };
+		1BA40A03251BAA560052050B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1BA40A04251BAA570052050B /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,7 +45,10 @@
 		1B26BAF4251BA8150058F388 = {
 			isa = PBXGroup;
 			children = (
-				1B26BAFF251BA8150058F388 /* mosze-rpg-game */,
+				1BA40A01251BAA560052050B /* Hero.cpp */,
+				1BA40A02251BAA560052050B /* Hero.h */,
+				1BA40A04251BAA570052050B /* main.cpp */,
+				1BA40A03251BAA560052050B /* README.md */,
 				1B26BAFE251BA8150058F388 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,13 +59,6 @@
 				1B26BAFD251BA8150058F388 /* mosze-rpg-game */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		1B26BAFF251BA8150058F388 /* mosze-rpg-game */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "mosze-rpg-game";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,6 +117,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BA40A06251BAA570052050B /* main.cpp in Sources */,
+				1BA40A05251BAA570052050B /* Hero.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
