@@ -35,13 +35,8 @@ int main(int argc, const char * argv[]) {
     
     //A játék lefolyása
     while(!warrior2->isDead() && !warrior1->isDead()){
-        
         warrior1->damaging(warrior2);
-        std::cout << warrior1->getName() << "->"<< warrior2->getName() << std::endl;
         warrior2->damaging(warrior1);
-        std::cout << warrior2->getName() << "->"<< warrior1->getName() << std::endl;
-        
-        std::cout << warrior1->getName() << " HP: " << warrior1->getHP() << std::endl << warrior2->getName() << " HP: " << warrior2->getHP() << std::endl;
     }
     
     
