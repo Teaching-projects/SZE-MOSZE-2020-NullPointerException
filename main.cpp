@@ -14,8 +14,10 @@ int main(int argc, const char * argv[]) {
     
     try {
         if(argc == 7){
+            
             warrior1 = new Hero(argv[1], std::stoi(argv[2]), std::stoi(argv[3]));
             warrior2 = new Hero(argv[4], std::stoi(argv[5]), std::stoi(argv[6]));
+            
         }else{
             std::cout << "Bad inputs. Initializing default parameters." << std::endl;
             warrior1 = new Hero("Superman", 150, 20);
