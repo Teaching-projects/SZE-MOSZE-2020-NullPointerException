@@ -1,3 +1,14 @@
 mosze-rpg-game.xcodeproj/
 mosze-rpg-game.xcodeproj
 a.out
+
+*.DS_Store
+
+
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
