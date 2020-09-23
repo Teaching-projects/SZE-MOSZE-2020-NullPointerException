@@ -18,6 +18,7 @@ public:
     int getDmg() const;
     bool isDead();
     void damaging(Hero *enemy);
+    static Hero parseUnit(const std::string& fileName);
     
 };
 
