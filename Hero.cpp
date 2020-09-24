@@ -41,9 +41,8 @@ void Hero::damaging(Hero *enemy){
 
 Hero Hero::parseUnit(const std::string& fileName){
     std::fstream file;
-    std::string line;
     file.open(fileName);
-    std::string readline, name, hp, dmg;
+    std::string readline, name, hp, dmg, line;
     
     const std::string delimiter = ":";
     
