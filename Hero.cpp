@@ -44,8 +44,6 @@ Hero Hero::parseUnit(const std::string& fileName){
     file.open(fileName);
     std::string readline, name, hp, dmg, line;
     
-    const std::string delimiter = ":";
-    
     if(file.is_open()){
         while (getline(file, line)) {
             for (int i = 0; i < line.size(); i++) {
