@@ -41,9 +41,9 @@ int main(int argc, const char * argv[]) {
     
     
     if(warrior1->isDead()){
-        std::cout << warrior1->getName() << " is dead. " << warrior2->getName() << " wins. " << std::endl;
+        std::cout << warrior2->getName() << " wins. Remaining HP: " << warrior2->getHP() << std::endl;
     }else{
-        std::cout << warrior2->getName() << " is dead. " << warrior1->getName() << " wins. " << std::endl;
+        std::cout << warrior1->getName() << " wins. Remaining HP: " << warrior1->getHP() << std::endl;
     }
     
     
