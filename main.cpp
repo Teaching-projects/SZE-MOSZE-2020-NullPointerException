@@ -1,12 +1,6 @@
 #include "Hero.h"
 #include <iostream>
 
-void firstCoutStatus(const Hero& warrior){
-    std::cout << "Warrior: "<< warrior.getName() << std::endl
-    << "Health: " << warrior.getHP() << std::endl
-    << "Damage: " << warrior.getDmg() << std::endl << std::endl;
-}
-
 int main(int argc, const char * argv[]) {
     //Hős1 és Hős2 létrehozása
     Hero *warrior1;
@@ -29,9 +23,6 @@ int main(int argc, const char * argv[]) {
         warrior2 = new Hero("Batman", 200, 30);
     }
     
-    //A hősök tulajdonságainak kiiratása a játék kezdetén
-    firstCoutStatus(*warrior1);
-    firstCoutStatus(*warrior2);
     
     //A játék lefolyása
     while(!warrior2->isDead() && !warrior1->isDead()){
