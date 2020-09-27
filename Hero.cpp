@@ -62,11 +62,14 @@ Hero Hero::parseUnit(const std::string& fileName){
             }
             readline = "";
         }
-        
+        file.close();
+        return Hero(name,stoi(hp),stoi(dmg));
+    }else{
+        throw std::runtime_error(fileName + " not exist.");
     }
     
-    file.close();
-    return Hero(name,stoi(hp),stoi(dmg));
+    
+    
 }
 
 
