@@ -16,4 +16,7 @@ A csapattagok:
 ### Futtatása
 A játékot először le kell fordítani egy c++ fordítóval. Az alábbi egy fordítási példa:<br>
     `g++ -std=c++17 main.cpp Hero.cpp` <br>
-Ezt követően a lefordított fájlt, a `./a.out <jatekosnev_1><eletero><sebzes><jatekosnev_2><eletero><sebzes>` paranccsal futtatható a játék.
+A karaktereket, két JSON típusú fájlból beolvasva inicializálja.
+Példa a két karakter betöltéséhez:
+`./a.out hulk.json ironman.json`
+A JSON fájlból kinyert karakter nevet, életerőt és sebzést, a program elkezdi a két karakter közötti harc szimulációját.
