@@ -41,19 +41,9 @@ void Hero::damaging(Hero *enemy){
 }
 
 Hero Hero::parseUnit(const std::string& fileName){
-    std::fstream file;
     std::map<std::string, std::string> Map;
-    file.open(fileName);
-    
-    if(file.is_open()){
-        Map = JsonParser::parseFile(file);
-        file.close();
-        return Hero(Map["name"],stoi(Map["hp"]),stoi(Map["dmg"]));
-    }else{
-        throw std::runtime_error(fileName + " not exist.");
-    }
-    
-    
+    Map = JsonParser::parser(fileName);
+    return Hero(Map["name"],stoi(Map["hp"]),stoi(Map["dmg"]));
     
 }
 
