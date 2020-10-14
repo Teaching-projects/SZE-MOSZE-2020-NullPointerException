@@ -38,7 +38,7 @@ TEST(ParserTest, FileInputTest){
 
 TEST(ParserTest, StringInputTest){
     std::map<std::string, std::string> expected;
-    std::string stringjson = "{\n\t\"name\"  :  \"Monster\",\n\t\"hp\":10000,\n\t\"dmg\"   :    100\n}";
+    std::string stringjson = "{\n\t\"name\"  :  \"Monster\",\n\t\"hp\":10000,\n\t\"dmg\"   :    100 \n}";
     
     expected.insert(std::pair<std::string, std::string>("name", "Monster"));
     expected.insert(std::pair<std::string, std::string>("hp", "10000"));
