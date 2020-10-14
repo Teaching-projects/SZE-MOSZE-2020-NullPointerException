@@ -68,7 +68,11 @@ const std::map<std::string, std::string> JsonParser::StringFinder(const std::str
     Map["hp"] = WhitespaceCleaner(hp);
     Map["dmg"] = WhitespaceCleaner(dmg);
     
-    return Map;
+    if(Map.find("name") != Map.end() or Map.find("hp") != Map.end() or Map.find("dmg") != Map.end()){
+        return Map;
+    }else{
+        throw std::runtime_error("Bad mapping");
+    }
 }
 
 std::string JsonParser::WhitespaceCleaner(std::string& string){
