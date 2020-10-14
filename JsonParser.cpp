@@ -93,7 +93,7 @@ std::string JsonParser::WhitespaceCleanerAndFormatChecker(std::string& string){
 
     for(int i=0; i<string.length(); i++){
         if(isspace(string[i]) and (isspace(string[i+1]) or isspace(string[i-1]))){
-            throw std::runtime_error("Bad Mapping..");
+            throw std::runtime_error("Bad Mapping or bad json format..");
         }
     }
     return string;
