@@ -47,9 +47,23 @@ std::map<std::string, std::string> JsonParser::StringFinder(std::string& Data){
             readline = "";
         }
     }
-    Map["name"] = name.erase(0,1);
-    Map["hp"] = hp.erase(0,1);
-    Map["dmg"] = dmg.erase(0,1);
+    
+    Map["name"] = WhitespaceCleaner(name);
+    Map["hp"] = WhitespaceCleaner(hp);
+    Map["dmg"] = WhitespaceCleaner(dmg);
+
+    std::cout << Map["name"] << std::endl;
     
     return Map;
+}
+
+std::string JsonParser::WhitespaceCleaner(std::string& string){
+    int szamlalo = 0;
+    do{
+        if(iswspace(string[szamlalo])){
+            string.erase(szamlalo, szamlalo+1);
+        }
+    }while(!isalnum(string[szamlalo]));
+    
+    return string;
 }
