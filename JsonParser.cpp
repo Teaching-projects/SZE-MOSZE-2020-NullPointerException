@@ -51,8 +51,6 @@ std::map<std::string, std::string> JsonParser::StringFinder(std::string& Data){
     Map["name"] = WhitespaceCleaner(name);
     Map["hp"] = WhitespaceCleaner(hp);
     Map["dmg"] = WhitespaceCleaner(dmg);
-
-    std::cout << Map["name"] << std::endl;
     
     return Map;
 }
