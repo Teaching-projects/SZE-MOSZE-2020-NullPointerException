@@ -15,17 +15,33 @@ std::map<std::string, std::string> JsonParser::parseFile(std::istream& istream){
 std::map<std::string, std::string> JsonParser::StringFinder(std::string& Data){
     std::map<std::string, std::string> Map;
     std::string readline = "";
+    bool ertek = false;
+    std::string chars = ":\"";
     
     for (int i = 0; i < Data.length(); i++) {
-        if (isalnum(Data[i])) {
+        
+        if(Data[i] == ':'){
+            ertek = true;
+        }else if (Data[i] == ','){
+            ertek = false;
+        }
+        
+        if (isalnum(Data[i]) or ertek == true) {
+            
             if (readline == "name"){
-                Map["name"] += Data[i];
+                if(Data[i] !=':' and Data[i] !='"'){
+                    Map["name"] += Data[i];
+                }
             }
             else if (readline == "hp"){
-                Map["hp"] += Data[i];
+                if(Data[i] !=':' and Data[i] !='"'){
+                    Map["hp"] += Data[i];
+                }
             }
             else if (readline == "dmg"){
-                Map["dmg"] += Data[i];
+                if(Data[i] !=':' and Data[i] !='"'){
+                    Map["dmg"] += Data[i];
+                }
             }
             else readline += Data[i];
         }
@@ -33,7 +49,8 @@ std::map<std::string, std::string> JsonParser::StringFinder(std::string& Data){
             readline = "";
         }
     }
-    std::cout << Data << std::endl << Map["name"] << std::endl;
+
+    std::cout << Data << std::endl << Map["hp"] << std::endl;
     
     return Map;
 }
