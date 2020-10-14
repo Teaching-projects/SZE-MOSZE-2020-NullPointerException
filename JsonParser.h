@@ -4,11 +4,11 @@
 
 class JsonParser{
 private:
-    static std::string WhitespaceCleaner(std::string& string);
-    static std::map<std::string, std::string> StringFinder(std::string& stringToParse);
+    static std::string WhitespaceCleaner(std::string&);
+    const static std::map<std::string, std::string> StringFinder(const std::string&);
 public:
-    static std::map<std::string, std::string> parser(const std::string& input);
-    static std::map<std::string, std::string> parseFile(std::istream& istream);
+    static std::map<std::string, std::string> parser(const std::string&);
+    static std::map<std::string, std::string> parseFile(std::istream&);
 };
 
 #endif /* JsonParser_h */

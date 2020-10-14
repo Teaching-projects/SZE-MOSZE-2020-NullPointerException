@@ -70,12 +70,7 @@ double Hero::getAttackSpeed() const{
 
 //Parsing an Unit from JSON file
 Hero Hero::parseUnit(const std::string& fileName){
-    std::fstream file;
     std::map<std::string, std::string> Map;
-    file.open(fileName);
-    if(file.is_open()){
-        Map = JsonParser::parseFile(file);
-        file.close();
-        return Hero(Map["name"],stoi(Map["hp"]),stoi(Map["dmg"]));
-    }
+    Map = JsonParser::parser(fileName);
+    return Hero(Map["name"],stoi(Map["hp"]),stoi(Map["dmg"]));
 }

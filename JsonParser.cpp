@@ -1,5 +1,6 @@
 #include "JsonParser.h"
 #include <iostream>
+#include <fstream>
 #include <string>
 
 std::map<std::string, std::string> JsonParser::parseFile(std::istream& istream){
@@ -13,7 +14,21 @@ std::map<std::string, std::string> JsonParser::parseFile(std::istream& istream){
     return JsonParser::StringFinder(Data);
 }
 
-std::map<std::string, std::string> JsonParser::StringFinder(std::string& Data){
+std::map<std::string, std::string> JsonParser::parser(const std::string& Filename){
+    std::ifstream jsonFile;
+    std::map<std::string, std::string> Map;
+    jsonFile.open(Filename);
+    if(jsonFile.is_open()){
+        Map = JsonParser::parseFile(jsonFile);
+        jsonFile.close();
+        return Map;
+    }else{
+        throw std::runtime_error(Filename + " not exist.");
+    }
+    
+}
+
+const std::map<std::string, std::string> JsonParser::StringFinder(const std::string& Data){
     std::map<std::string, std::string> Map;
     std::string readline,name,hp,dmg  = "";
     bool ertek = false;
