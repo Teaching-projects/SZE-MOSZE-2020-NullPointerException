@@ -1,6 +1,5 @@
 #include "Hero.h"
 #include "JsonParser.h"
-#include <fstream>
 
 //Constructor of Hero class
 Hero::Hero(const std::string& name, int hp, const int dmg, const double attackspeed) : name(name), hp(hp), dmg(dmg), attackspeed(attackspeed){}
