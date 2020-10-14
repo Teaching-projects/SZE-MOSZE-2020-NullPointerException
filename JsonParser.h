@@ -6,7 +6,7 @@
 
 class JsonParser{
 private:
-    static std::map<std::string, std::string> StringFinder(std::string& stringToParse)
+    static std::map<std::string, std::string> StringFinder(std::string& stringToParse);
 public:
     static std::map<std::string, std::string> parser(const std::string& input);
     static std::map<std::string, std::string> parseFile(std::istream& istream);

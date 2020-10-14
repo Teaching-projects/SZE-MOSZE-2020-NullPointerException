@@ -1,4 +1,5 @@
 #include "Hero.h"
+#include "JsonParser.h"
 #include <fstream>
 
 
@@ -41,29 +42,13 @@ void Hero::damaging(Hero *enemy){
 
 Hero Hero::parseUnit(const std::string& fileName){
     std::fstream file;
+    std::map<std::string, std::string> Map;
     file.open(fileName);
-    std::string readline, name, hp, dmg, line;
     
     if(file.is_open()){
-        while (getline(file, line)) {
-            for (int i = 0; i < line.size(); i++) {
-                if (isalnum(line[i])) {
-                    if (readline == "name"){
-                        name += line[i];
-                    }
-                    else if (readline == "hp"){
-                        hp += line[i];
-                    }
-                    else if (readline == "dmg"){
-                        dmg += line[i];
-                    }
-                    else readline += line[i];
-                }
-            }
-            readline = "";
-        }
+        Map = JsonParser::parseFile(file);
         file.close();
-        return Hero(name,stoi(hp),stoi(dmg));
+        return Hero(Map["name"],stoi(Map["hp"]),stoi(Map["dmg"]));
     }else{
         throw std::runtime_error(fileName + " not exist.");
     }
