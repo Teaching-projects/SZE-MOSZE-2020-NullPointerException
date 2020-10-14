@@ -18,6 +18,38 @@ TEST(ParserTest, FilenameInputTest){
     
 }
 
+TEST(ParserTest, FileInputTest){
+    std::map<std::string, std::string> expected;
+    std::map<std::string, std::string> jsontest;
+    
+    expected.insert(std::pair<std::string, std::string>("name", "Monster"));
+    expected.insert(std::pair<std::string, std::string>("hp", "10000"));
+    expected.insert(std::pair<std::string, std::string>("dmg", "100"));
+    
+    std::string filename("test/test_warrior.json");
+    
+    std::ifstream fileinput(filename);
+    
+    jsontest = JsonParser::parseFile(fileinput);
+    
+    ASSERT_EQ(expected, jsontest);
+    
+}
+
+TEST(ParserTest, StringInputTest){
+    std::map<std::string, std::string> expected;
+    std::string stringjson = "{\n\t\"name\"  :  \"Monster\",\n\t\"hp\":10000,\n\t\"dmg\"   :    100\n}";
+    
+    expected.insert(std::pair<std::string, std::string>("name", "Monster"));
+    expected.insert(std::pair<std::string, std::string>("hp", "10000"));
+    expected.insert(std::pair<std::string, std::string>("dmg", "100"));
+    
+    std::map<std::string, std::string> jsontest = JsonParser::StringFinder(stringjson);
+    
+    ASSERT_EQ(expected, jsontest);
+    
+}
+
 
 int main(int argc, char** argv)
 {
