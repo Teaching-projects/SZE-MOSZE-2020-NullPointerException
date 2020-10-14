@@ -5,8 +5,8 @@
 class JsonParser{
 private:
     static std::string WhitespaceCleanerAndFormatChecker(std::string&);
-    const static std::map<std::string, std::string> StringFinder(const std::string&);
 public:
+    const static std::map<std::string, std::string> StringFinder(const std::string&);
     static std::map<std::string, std::string> parser(const std::string&);
     static std::map<std::string, std::string> parseFile(std::istream&);
 };
