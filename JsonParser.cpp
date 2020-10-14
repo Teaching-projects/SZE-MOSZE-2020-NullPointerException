@@ -88,13 +88,7 @@ std::string JsonParser::WhitespaceCleanerAndFormatChecker(std::string& string){
             }
         }while(!isalnum(string[szamlalo]));
     }else{
-        throw std::runtime_error("The json format is bad.");
-    }
-
-    for(int i=0; i<string.length(); i++){
-        if(isspace(string[i]) and (isspace(string[i+1]) or isspace(string[i-1]))){
-            throw std::runtime_error("Bad Mapping or bad json format..");
-        }
+        throw std::runtime_error("Bad Mapping or bad json format.");
     }
     return string;
 }
