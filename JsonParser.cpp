@@ -78,6 +78,5 @@ std::string JsonParser::WhitespaceCleaner(std::string& string){
             string.erase(szamlalo, szamlalo+1);
         }
     }while(!isalnum(string[szamlalo]));
-    
     return string;
 }
