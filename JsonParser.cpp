@@ -64,9 +64,9 @@ const std::map<std::string, std::string> JsonParser::StringFinder(const std::str
         }
     }
     
-    Map["name"] = WhitespaceCleaner(name);
-    Map["hp"] = WhitespaceCleaner(hp);
-    Map["dmg"] = WhitespaceCleaner(dmg);
+    Map["name"] = WhitespaceCleanerAndFormatChecker(name);
+    Map["hp"] = WhitespaceCleanerAndFormatChecker(hp);
+    Map["dmg"] = WhitespaceCleanerAndFormatChecker(dmg);
     
     if(Map.find("name") != Map.end() or Map.find("hp") != Map.end() or Map.find("dmg") != Map.end()){
         return Map;
@@ -75,12 +75,26 @@ const std::map<std::string, std::string> JsonParser::StringFinder(const std::str
     }
 }
 
-std::string JsonParser::WhitespaceCleaner(std::string& string){
+std::string JsonParser::WhitespaceCleanerAndFormatChecker(std::string& string){
     int szamlalo = 0;
-    do{
-        if(iswspace(string[szamlalo])){
-            string.erase(szamlalo, szamlalo+1);
+    
+    if(string != ""){
+        do{
+            if(string[szamlalo] != ' '){
+                break;
+            }
+            if(iswspace(string[szamlalo])){
+                string.erase(szamlalo, szamlalo+1);
+            }
+        }while(!isalnum(string[szamlalo]));
+    }else{
+        throw std::runtime_error("The json format is bad.");
+    }
+
+    for(int i=0; i<string.length(); i++){
+        if(isspace(string[i]) and (isspace(string[i+1]) or isspace(string[i-1]))){
+            throw std::runtime_error("Bad Mapping..");
         }
-    }while(!isalnum(string[szamlalo]));
+    }
     return string;
 }
