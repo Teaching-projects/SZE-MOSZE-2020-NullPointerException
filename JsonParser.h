@@ -1,7 +1,5 @@
 #ifndef JsonParser_h
 #define JsonParser_h
-#include <string>
-#include <fstream>
 #include <map>
 
 class JsonParser{
