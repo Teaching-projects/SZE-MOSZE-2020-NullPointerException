@@ -1,4 +1,5 @@
 #include "JsonParser.h"
+#include <iostream>
 
 std::map<std::string, std::string> JsonParser::parseFile(std::istream& istream){
     std::string Data;
@@ -8,7 +9,6 @@ std::map<std::string, std::string> JsonParser::parseFile(std::istream& istream){
             Data += line;
         }
     }
-    
     return JsonParser::StringFinder(Data);
 }
 
@@ -16,7 +16,7 @@ std::map<std::string, std::string> JsonParser::StringFinder(std::string& Data){
     std::map<std::string, std::string> Map;
     std::string readline = "";
     
-    for (int i = 0; i < Data.size(); i++) {
+    for (int i = 0; i < Data.length(); i++) {
         if (isalnum(Data[i])) {
             if (readline == "name"){
                 Map["name"] += Data[i];
@@ -29,8 +29,11 @@ std::map<std::string, std::string> JsonParser::StringFinder(std::string& Data){
             }
             else readline += Data[i];
         }
+        if(Data[i] == ','){
+            readline = "";
+        }
     }
-    readline = "";
+    std::cout << Data << std::endl << Map["name"] << std::endl;
     
     return Map;
 }
