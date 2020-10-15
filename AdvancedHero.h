@@ -8,7 +8,7 @@ private:
     int maxHp;
     int xp;
     static int xpHatar;
-    int lvl = 1;
+    int lvl;
     void levelup(int);
     
 public:

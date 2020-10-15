@@ -46,7 +46,7 @@ Hero Hero::parseUnit(const std::string& fileName){
     
     if(file.is_open()){
         while (getline(file, line)) {
-            for (int i = 0; i < line.size(); i++) {
+            for (unsigned i = 0; i < line.size(); i++) {
                 if (isalnum(line[i])) {
                     if (readline == "name"){
                         name += line[i];
