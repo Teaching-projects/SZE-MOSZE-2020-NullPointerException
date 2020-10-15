@@ -1,5 +1,5 @@
 {
     "name" : "Captain America",
-    "hp" : 35000,
-    "dmg" : 10000
+    "hp" : 200,
+    "dmg" : 50
 }
