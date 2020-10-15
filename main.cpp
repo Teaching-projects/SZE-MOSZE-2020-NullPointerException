@@ -5,8 +5,8 @@
 int main(int argc, const char * argv[]) {
     try {
         if(argc == 3){
-            AdvancedHero *warrior1 = new Hero(Hero::parseUnit(argv[1]));
-            AdvencedHero *warrior2 = new Hero(Hero::parseUnit(argv[2]));
+            AdvancedHero *warrior1 = new AdvancedHero(AdvancedHero::parseUnit(argv[1]));
+            AdvancedHero *warrior2 = new AdvancedHero(AdvancedHero::parseUnit(argv[2]));
             
             while(!warrior2->isDead() && !warrior1->isDead()){
                 warrior1->advancedDamage(warrior2);

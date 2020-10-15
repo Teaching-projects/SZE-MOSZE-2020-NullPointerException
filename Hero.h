@@ -4,10 +4,10 @@
 
 
 class Hero{
-private:
+protected:
     const std::string name;
     int hp;
-    const int dmg;
+    int dmg;
     
 public:
     //Ctor, Dtor
