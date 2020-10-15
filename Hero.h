@@ -8,6 +8,9 @@ private:
     const std::string name;
     int hp;
     const int dmg;
+    const double attackspeed;
+
+    void damaging(Hero *enemy);
     
 public:
     //Ctor, Dtor
