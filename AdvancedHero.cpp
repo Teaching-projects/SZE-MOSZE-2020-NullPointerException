@@ -29,3 +29,9 @@ void AdvancedHero::levelup(int levelcount){
     }
     
 }
+
+std::string AdvancedHero::status() const{
+        
+    return name + ": HP:" + std::to_string(hp) + " DMG: " + std::to_string(dmg)
+    + " XP: " + std::to_string(xp) + " LVL: " + std::to_string(lvl);
+}
