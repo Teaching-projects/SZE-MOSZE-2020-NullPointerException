@@ -14,13 +14,19 @@ private:
     
 public:
     //Ctor, Dtor
-    Hero(const std::string&, int, const int);
+    Hero(const std::string&, int, const int, const double);
     //Karakter Alapadatok, Get-Set - Név, HP, DMG
     const std::string& getName() const;
     int getHP() const;
     int getDmg() const;
+    double getAttackSpeed() const;
+
+
     bool isDead();
-    void damaging(Hero *enemy);
+
+    void Battle(Hero*);
+
+    //void damaging(Hero *enemy);
     static Hero parseUnit(const std::string& fileName);
     
 };
