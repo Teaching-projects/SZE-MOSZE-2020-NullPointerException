@@ -3,7 +3,7 @@
 
 
 
-Hero::Hero(const std::string& name, int hp, const int dmg) : name(name), hp(hp), dmg(dmg){}
+Hero::Hero(const std::string& name, int hp, const int dmg, const double attackspeed) : name(name), hp(hp), dmg(dmg), attackspeed(attackspeed){}
 
 const std::string& Hero::getName() const{
     return name;
@@ -37,6 +37,15 @@ void Hero::damaging(Hero *enemy){
         }
     }
     
+}
+
+void Hero::Battle(Hero* target){
+    double w1 = this->getAttackSpeed();
+    double w2 = target->getAttackSpeed();
+    double tempw1 = 0;
+    double tempw2 = 0;
+
+    this->damaging(target);
 }
 
 Hero Hero::parseUnit(const std::string& fileName){
