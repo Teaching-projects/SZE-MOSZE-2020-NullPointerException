@@ -3,10 +3,10 @@
 
 
 int AdvancedHero::xpHatar = 100;
-int lvl = 1;
 
 AdvancedHero::AdvancedHero(const std::string& name, int hp, const int dmg) : Hero(name, hp, dmg), maxHp(hp){
     this->xp=0;
+    this->lvl=1;
 }
 
 AdvancedHero AdvancedHero::parseUnit(const std::string& filename){
