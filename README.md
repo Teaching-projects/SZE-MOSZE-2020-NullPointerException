@@ -20,3 +20,6 @@ A karaktereket, két JSON típusú fájlból beolvasva inicializálja.
 Példa a két karakter betöltéséhez:
 `./a.out hulk.json ironman.json`
 A JSON fájlból kinyert karakter nevet, életerőt és sebzést, a program elkezdi a két karakter közötti harc szimulációját.
+
+Github-pages link:
+[https://teaching-projects.github.io/SZE-MOSZE-2020-NullPointerException/](https://teaching-projects.github.io/SZE-MOSZE-2020-NullPointerException/)
