@@ -52,7 +52,7 @@ TEST(ParserTest, StringInputTest){
 }
 
 TEST(ParserTest, JsonParserFailTest){
-    std::string errormsg = "Exception: Bad Mapping or bad json format.";
+    std::string errormsg = "Bad Mapping or bad json format.";
     try{
         std::map<std::string, std::string> json;
         json = JsonParser::parser("test/wrong_json.json");
