@@ -3,6 +3,7 @@ mosze3.xcodeproj
 *.xcodeproj/
 *.xcodeproj
 a.out
+a.exe
 mosze3/
 
 *.DS_Store
