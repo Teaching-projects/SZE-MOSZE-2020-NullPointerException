@@ -71,7 +71,7 @@ double Hero::getAttackSpeed() const{
 Hero Hero::parseUnit(const std::string& fileName){
     std::map<std::string, std::string> Map;
     Map = JsonParser::parser(fileName);
-    if(Map.find("name") != Map.end() or Map.find("hp") != Map.end() or Map.find("dmg") != Map.end()){
+    if(Map.find("name") != Map.end() && Map.find("hp") != Map.end() && Map.find("dmg") != Map.end()){
         return Hero(Map["name"],stoi(Map["hp"]),stoi(Map["dmg"]));
     }else{
         throw std::runtime_error("Bad mapping");
