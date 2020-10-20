@@ -1,8 +1,9 @@
 #include "Hero.h"
 #include "JsonParser.h"
 
-//Constructor of Hero class
-Hero::Hero(const std::string& name, int hp, const int dmg, const double attackspeed) : name(name), hp(hp), dmg(dmg), attackspeed(attackspeed){}
+
+
+Hero::Hero(const std::string& name, int hp, const int dmg) : name(name), hp(hp), dmg(dmg){}
 
 //Getter of Hero's name
 const std::string& Hero::getName() const{
@@ -76,4 +77,6 @@ Hero Hero::parseUnit(const std::string& fileName){
     }else{
         throw std::runtime_error("Bad mapping");
     }
+    
+    
 }
