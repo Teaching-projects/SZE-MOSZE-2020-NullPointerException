@@ -30,7 +30,7 @@ std::map<std::string, std::string> JsonParser::parser(const std::string& Filenam
 
 const std::map<std::string, std::string> JsonParser::StringFinder(const std::string& Data){
     std::map<std::string, std::string> Map;
-    std::string readline,name,hp,dmg  = "";
+    std::string readline,name,hp,dmg,as  = "";
     bool ertek = false;
     
     for (int i = 0; i < Data.length(); i++) {
@@ -57,6 +57,11 @@ const std::map<std::string, std::string> JsonParser::StringFinder(const std::str
                     dmg += Data[i];
                 }
             }
+            else if (readline == "attackcooldown"){
+                if(Data[i] !=':' and Data[i] !='"'){
+                    as += Data[i];
+                }
+            }
             else readline += Data[i];
         }
         if(Data[i] == ','){
@@ -67,8 +72,9 @@ const std::map<std::string, std::string> JsonParser::StringFinder(const std::str
     Map["name"] = WhitespaceCleanerAndFormatChecker(name);
     Map["hp"] = WhitespaceCleanerAndFormatChecker(hp);
     Map["dmg"] = WhitespaceCleanerAndFormatChecker(dmg);
+    Map["attackcooldown"] = WhitespaceCleanerAndFormatChecker(as);
     
-    if(Map.find("name") != Map.end() && Map.find("hp") != Map.end() && Map.find("dmg") != Map.end()){
+    if(Map.find("name") != Map.end() && Map.find("hp") != Map.end() && Map.find("dmg") != Map.end() && Map.find("attackcooldown") != Map.end()){
         return Map;
     }else{
         throw std::runtime_error("Bad mapping");

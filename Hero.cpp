@@ -3,7 +3,7 @@
 
 
 
-Hero::Hero(const std::string& name, int hp, const int dmg) : name(name), hp(hp), dmg(dmg){}
+Hero::Hero(const std::string& name, int hp, const int dmg, const double attackspeed) : name(name), hp(hp), dmg(dmg), attackspeed(attackspeed){}
 
 //Getter of Hero's name
 const std::string& Hero::getName() const{
@@ -72,8 +72,8 @@ double Hero::getAttackSpeed() const{
 Hero Hero::parseUnit(const std::string& fileName){
     std::map<std::string, std::string> Map;
     Map = JsonParser::parser(fileName);
-    if(Map.find("name") != Map.end() && Map.find("hp") != Map.end() && Map.find("dmg") != Map.end()){
-        return Hero(Map["name"],stoi(Map["hp"]),stoi(Map["dmg"]));
+    if(Map.find("name") != Map.end() && Map.find("hp") != Map.end() && Map.find("dmg") != Map.end() && Map.find("attackcooldown") != Map.end()){
+        return Hero(Map["name"],stoi(Map["hp"]),stoi(Map["dmg"]), stod(Map["attackcooldown"]));
     }else{
         throw std::runtime_error("Bad mapping");
     }
