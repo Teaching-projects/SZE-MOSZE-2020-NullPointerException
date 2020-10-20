@@ -46,6 +46,7 @@ TEST(ParserTest, StringInputTest){
     expected.insert(std::pair<std::string, std::string>("name", "Monster"));
     expected.insert(std::pair<std::string, std::string>("hp", "10000"));
     expected.insert(std::pair<std::string, std::string>("dmg", "100"));
+    expected.insert(std::pair<std::string, std::string>("attackcooldown", "2"));
     
     std::map<std::string, std::string> jsontest = JsonParser::StringFinder(stringjson);
     
