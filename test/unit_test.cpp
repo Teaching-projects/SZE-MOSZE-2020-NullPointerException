@@ -11,6 +11,7 @@ TEST(ParserTest, FilenameInputTest){
     expected.insert(std::pair<std::string, std::string>("name", "Monster"));
     expected.insert(std::pair<std::string, std::string>("hp", "10000"));
     expected.insert(std::pair<std::string, std::string>("dmg", "100"));
+    expected.insert(std::pair<std::string, std::string>("attackcooldown", "2"));
     
     jsontest = JsonParser::parser("test/test_warrior.json");
     
@@ -25,6 +26,7 @@ TEST(ParserTest, FileInputTest){
     expected.insert(std::pair<std::string, std::string>("name", "Monster"));
     expected.insert(std::pair<std::string, std::string>("hp", "10000"));
     expected.insert(std::pair<std::string, std::string>("dmg", "100"));
+    expected.insert(std::pair<std::string, std::string>("attackcooldown", "2"));
     
     std::string filename("test/test_warrior.json");
     
@@ -39,7 +41,7 @@ TEST(ParserTest, FileInputTest){
 TEST(ParserTest, StringInputTest){
     std::map<std::string, std::string> expected;
     std::string stringjson =
-    "{\n\t\"name\"  :  \"Monster\",\n\t\"hp\":10000,\n\t\"dmg\":100, \n}";
+    "{\n\t\"name\"  :  \"Monster\",\n\t\"hp\":10000,\n\t\"dmg\":100,\n\t\"attackcooldown\":2, \n}";
     
     expected.insert(std::pair<std::string, std::string>("name", "Monster"));
     expected.insert(std::pair<std::string, std::string>("hp", "10000"));
