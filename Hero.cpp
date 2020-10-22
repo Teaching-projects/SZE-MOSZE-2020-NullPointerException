@@ -1,7 +1,8 @@
 #include "Hero.h"
-#include <fstream>
+#include "JsonParser.h"
 
-//Constructor of Hero class
+
+
 Hero::Hero(const std::string& name, int hp, const int dmg, const double attackspeed) : name(name), hp(hp), dmg(dmg), attackspeed(attackspeed){}
 
 //Getter of Hero's name
@@ -69,34 +70,13 @@ double Hero::getAttackSpeed() const{
 
 //Parsing an Unit from JSON file
 Hero Hero::parseUnit(const std::string& fileName){
-    std::fstream file;
-    file.open(fileName);
-    std::string readline, name, hp, dmg, attackspeed, line;
-    
-    if(file.is_open()){
-        while (getline(file, line)) {
-            for (int i = 0; i < line.size(); i++) {
-                if (isalnum(line[i]) || line[i] == '.') {
-                    if (readline == "name"){
-                        name += line[i];
-                    }
-                    else if (readline == "hp"){
-                        hp += line[i];
-                    }
-                    else if (readline == "dmg"){
-                        dmg += line[i];
-                    }
-                    else if (readline == "attackcooldown"){
-                        attackspeed += line[i];
-                    }
-                    else readline += line[i];
-                }
-            }
-            readline = "";
-        }
-        file.close();
-        return Hero(name,stoi(hp),stoi(dmg),stod(attackspeed));
+    std::map<std::string, std::string> Map;
+    Map = JsonParser::parser(fileName);
+    if(Map.find("name") != Map.end() && Map.find("hp") != Map.end() && Map.find("dmg") != Map.end() && Map.find("attackcooldown") != Map.end()){
+        return Hero(Map["name"],stoi(Map["hp"]),stoi(Map["dmg"]), stod(Map["attackcooldown"]));
     }else{
-        throw std::runtime_error(fileName + " not exist.");
+        throw std::runtime_error("Bad mapping");
     }
+    
+    
 }
