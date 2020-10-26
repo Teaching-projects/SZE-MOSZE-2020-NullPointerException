@@ -12,7 +12,7 @@ private:
     void levelup(int);
     
 public:
-    AdvancedHero(const std::string&,int,const int);
+    AdvancedHero(const std::string&,int,const int,const double);
     int getLvl() const;
     int getxp() const;
     void advancedDamage(AdvancedHero*);
