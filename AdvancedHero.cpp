@@ -9,7 +9,7 @@ AdvancedHero::AdvancedHero(const std::string& name, int hp, const int dmg, const
 
 AdvancedHero AdvancedHero::parseUnit(const std::string& filename){
     Hero Unit = Hero::parseUnit(filename);
-    return AdvancedHero(Unit.getName(), Unit.getHP(), Unit.getDmg());
+    return AdvancedHero(Unit.getName(), Unit.getHP(), Unit.getDmg(), Unit.getAttackSpeed());
 }
 
 void AdvancedHero::advancedDamage(AdvancedHero* enemy){
