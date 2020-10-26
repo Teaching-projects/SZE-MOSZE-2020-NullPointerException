@@ -22,6 +22,7 @@ void AdvancedHero::levelup(int levelcount){
     for(int i=0; i<levelcount; i++){
         maxHp = (int)round((double)maxHp * 1.1);
         dmg = (int)round((double)dmg * 1.1);
+        attackspeed = getAttackSpeed()*0.9;
         hp = maxHp;
         lvl++;
         xp -= xpHatar;
