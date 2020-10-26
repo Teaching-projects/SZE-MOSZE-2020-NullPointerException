@@ -23,7 +23,7 @@ protected:
     const std::string name; ///< This is the name of the Hero
     int hp; ///< The health of the Hero, always changing during the fight
     int dmg; ///< The amount of damage he can hits with
-    const double attackspeed; ///< This is the attackspeed of the Hero
+    double attackspeed; ///< This is the attackspeed of the Hero
 
     /**
      * \brief Taking damage to a target Hero
