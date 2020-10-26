@@ -22,7 +22,7 @@ class Hero{
 protected:
     const std::string name; ///< This is the name of the Hero
     int hp; ///< The health of the Hero, always changing during the fight
-    const int dmg; ///< The amount of damage he can hits with
+    int dmg; ///< The amount of damage he can hits with
     const double attackspeed; ///< This is the attackspeed of the Hero
 
     /**
