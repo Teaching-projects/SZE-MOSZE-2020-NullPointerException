@@ -6,9 +6,9 @@
 class AdvancedHero : public Hero {
 private:
     int maxHp;
-    int xp;
+    int xp = 0;
     static int xpHatar;
-    int lvl;
+    int lvl = 1;
     void levelup(int);
     
 public:
