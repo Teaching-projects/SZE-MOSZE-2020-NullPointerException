@@ -1,5 +1,6 @@
 {
     "name" : "Captain America",
-    "hp" : 200,
-    "dmg" : 50
+    "hp" : 35000,
+    "dmg" : 10000,
+    "attackcooldown" : 1
 }

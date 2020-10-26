@@ -1,6 +1,6 @@
-Hulk wins. Remaining HP: 0
-CaptainAmerica wins. Remaining HP: 220
-CaptainAmerica wins. Remaining HP: 7479
-Hulk wins. Remaining HP: 550
-Hulk wins. Remaining HP: 550
-CaptainAmerica wins. Remaining HP: 220
+Captain America wins. Remaining HP: 19000
+Captain America wins. Remaining HP: 28000
+Captain America wins. Remaining HP: 11000
+Hulk wins. Remaining HP: 44000
+Hulk wins. Remaining HP: 37000
+Captain America wins. Remaining HP: 21000

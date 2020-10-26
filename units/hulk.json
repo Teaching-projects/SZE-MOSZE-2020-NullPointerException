@@ -1,5 +1,6 @@
 {
     "name" : "Hulk",
-    "hp" : 500,
-    "dmg" : 30
+    "hp" : 100000,
+    "dmg" : 4000,
+    "attackcooldown" : 2
 }
