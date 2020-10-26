@@ -24,4 +24,4 @@ jobs:
       - name: Gplusplus Wall
         run: g++ -Wall -Werror *.cpp
       - name: Valgrind
-        run: valgrind --error-exitcode=1 --leak-check=full ./a.out units/ironman.json units/hulk.jso
+        run: valgrind --error-exitcode=1 --leak-check=full ./a.out units/ironman.json units/hulk.json
