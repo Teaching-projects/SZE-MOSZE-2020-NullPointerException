@@ -38,7 +38,7 @@ public:
     const std::string& getName() const; ///< Const getter of the Hero's name
     int getHP() const; ///< Const getter of the Hero's health
     int getDmg() const; ///< Const getter of the Hero's damage
-    double getAttackSpeed() const; ///< Const getter of the Hero's attackspeed
+    double getAttackCooldown() const; ///< Const getter of the Hero's attackspeed
     
     /**
      * \brief This checks if the unit is dead or not
