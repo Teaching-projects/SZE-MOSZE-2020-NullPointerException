@@ -1,4 +1,5 @@
 #include "AdvancedHero.h"
+#include <iostream>
 #include <cmath>
 
 
@@ -9,12 +10,12 @@ AdvancedHero::AdvancedHero(const std::string& name, int hp, const int dmg, const
 
 AdvancedHero AdvancedHero::parseUnit(const std::string& filename){
     Hero Unit = Hero::parseUnit(filename);
-    return AdvancedHero(Unit.getName(), Unit.getHP(), Unit.getDmg(), Unit.getAttackSpeed());
+    return AdvancedHero(Unit.getName(), Unit.getHP(), Unit.getDmg(), Unit.getAttackCooldown());
 }
 
 void AdvancedHero::advancedBattle(AdvancedHero* target){
-    double w1 = this->getAttackSpeed();
-    double w2 = target->getAttackSpeed();
+    double w1 = this->getAttackCooldown();
+    double w2 = target->getAttackCooldown();
     double tempw1 = 0;
     double tempw2 = 0;
     
@@ -22,8 +23,8 @@ void AdvancedHero::advancedBattle(AdvancedHero* target){
     
     while(!this->isDead() && !target->isDead()){
         
-        w1 = this->getAttackSpeed();
-        w2 = target->getAttackSpeed();
+        w1 = this->getAttackCooldown();
+        w2 = target->getAttackCooldown();
         
         if(w1+tempw1 < w2+tempw2){
             tempw1 += w1;
@@ -48,12 +49,11 @@ void AdvancedHero::levelup(int levelcount){
     for(int i=0; i<levelcount; i++){
         maxHp = (int)round((double)maxHp * 1.1);
         dmg = (int)round((double)dmg * 1.1);
-        attackspeed = getAttackSpeed()*0.9;
+        attackspeed = getAttackCooldown()*0.9;
         hp = maxHp;
         lvl++;
         xp -= xpHatar;
     }
-    
 }
 
 std::string AdvancedHero::status() const{
