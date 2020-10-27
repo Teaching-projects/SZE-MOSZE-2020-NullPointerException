@@ -64,7 +64,7 @@ void Hero::Battle(Hero* target){
 }
 
 //Getter of attackspeed
-double Hero::getAttackSpeed() const{
+double Hero::getAttackCooldown() const{
     return attackspeed;
 }
 
