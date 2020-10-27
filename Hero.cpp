@@ -42,8 +42,8 @@ void Hero::damaging(Hero *enemy){
 
 //Automatized battle method, according to the attackspeed
 void Hero::Battle(Hero* target){
-    double w1 = this->getAttackSpeed();
-    double w2 = target->getAttackSpeed();
+    double w1 = this->getAttackCooldown();
+    double w2 = target->getAttackCooldown();
     double tempw1 = 0;
     double tempw2 = 0;
     
