@@ -1,4 +1,5 @@
 #include "AdvancedHero.h"
+#include <iostream>
 #include <cmath>
 
 
@@ -10,6 +11,28 @@ AdvancedHero::AdvancedHero(const std::string& name, int hp, const int dmg, const
 AdvancedHero AdvancedHero::parseUnit(const std::string& filename){
     Hero Unit = Hero::parseUnit(filename);
     return AdvancedHero(Unit.getName(), Unit.getHP(), Unit.getDmg(), Unit.getAttackSpeed());
+}
+
+void AdvancedHero::advancedBattle(AdvancedHero* target){
+    double w1 = this->getAttackSpeed();
+    double w2 = target->getAttackSpeed();
+    double tempw1 = 0;
+    double tempw2 = 0;
+    
+    this->advancedDamage(target);
+    
+    while(!this->isDead() && !target->isDead()){
+        if(w1+tempw1 < w2+tempw2){
+            tempw1 += w1;
+            this->advancedDamage(target);
+        }else if(w1+tempw1 > w2+tempw2){
+            tempw2 += w2;
+            target->advancedDamage(this);
+        }else{ //Alapertelmezett utes ha mindkettojuknek egyforma az attackspeed
+            tempw1 += w1;
+            this->advancedDamage(target);
+        }
+    }
 }
 
 void AdvancedHero::advancedDamage(AdvancedHero* enemy){
@@ -33,5 +56,5 @@ void AdvancedHero::levelup(int levelcount){
 std::string AdvancedHero::status() const{
         
     return name + ": HP:" + std::to_string(hp) + " DMG: " + std::to_string(dmg)
-    + " XP: " + std::to_string(xp) + " LVL: " + std::to_string(lvl);
+    + " XP: " + std::to_string(xp) + " LVL: " + std::to_string(lvl) + "AS: " + std::to_string(attackspeed);
 }
