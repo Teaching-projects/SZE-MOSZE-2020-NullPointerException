@@ -15,7 +15,8 @@ public:
     AdvancedHero(const std::string&,int,const int,const double);
     int getLvl() const;
     int getxp() const;
-    void advancedDamage(AdvancedHero*);
+    void advancedDamage(AdvancedHero* enemy);
+    void advancedBattle(AdvancedHero* target);
     static AdvancedHero parseUnit(const std::string&);
     std::string status() const;
     
