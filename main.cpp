@@ -10,7 +10,7 @@ int main(int argc, const char * argv[]) {
             AdvancedHero *warrior1 = new AdvancedHero(AdvancedHero::parseUnit(argv[1]));
             AdvancedHero *warrior2 = new AdvancedHero(AdvancedHero::parseUnit(argv[2]));
             
-            warrior1->Battle(warrior2);
+            warrior1->advancedBattle(warrior2);
             
             if(warrior1->isDead()){
                 std::cout << warrior2->getName() << " wins. Remaining HP: " << warrior2->getHP() << std::endl;
