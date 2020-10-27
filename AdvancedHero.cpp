@@ -21,6 +21,10 @@ void AdvancedHero::advancedBattle(AdvancedHero* target){
     this->advancedDamage(target);
     
     while(!this->isDead() && !target->isDead()){
+        
+        w1 = this->getAttackSpeed();
+        w2 = target->getAttackSpeed();
+        
         if(w1+tempw1 < w2+tempw2){
             tempw1 += w1;
             this->advancedDamage(target);
