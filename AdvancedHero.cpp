@@ -1,5 +1,4 @@
 #include "AdvancedHero.h"
-#include <iostream>
 #include <cmath>
 
 
