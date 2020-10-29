@@ -19,11 +19,11 @@
 
 //This is the class of the Heroes
 class Hero{
-private:
+protected:
     const std::string name; ///< This is the name of the Hero
     int hp; ///< The health of the Hero, always changing during the fight
-    const int dmg; ///< The amount of damage he can hits with
-    const double attackspeed; ///< This is the attackspeed of the Hero
+    int dmg; ///< The amount of damage he can hits with
+    double attackspeed; ///< This is the attackspeed of the Hero
 
     /**
      * \brief Taking damage to a target Hero
@@ -38,7 +38,7 @@ public:
     const std::string& getName() const; ///< Const getter of the Hero's name
     int getHP() const; ///< Const getter of the Hero's health
     int getDmg() const; ///< Const getter of the Hero's damage
-    double getAttackSpeed() const; ///< Const getter of the Hero's attackspeed
+    double getAttackCooldown() const; ///< Const getter of the Hero's attackspeed
     
     /**
      * \brief This checks if the unit is dead or not

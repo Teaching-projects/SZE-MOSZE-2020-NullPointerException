@@ -33,7 +33,7 @@ const std::map<std::string, std::string> JsonParser::StringFinder(const std::str
     std::string readline,name,hp,dmg,as  = "";
     bool ertek = false;
     
-    for (int i = 0; i < Data.length(); i++) {
+    for (unsigned int i = 0; i < Data.length(); i++) {
         
         if(Data[i] == ':'){
             ertek = true;

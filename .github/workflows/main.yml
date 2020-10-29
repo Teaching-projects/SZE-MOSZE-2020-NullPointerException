@@ -10,3 +10,18 @@ jobs:
       - uses: actions/checkout@v2
       - run: g++ -std=c++17 *.cpp
       - run: ./run_test.sh
+      - name: Install tools
+        run: sudo apt-get install -y valgrind cppcheck
+      - name: Cppcheck report
+        run: cppcheck *.cpp --enable=warning,style,performance --output-file=report.txt
+      - name: Artifacting
+        uses: actions/upload-artifact@v2
+        with:
+          name: reports
+          path: ./report.txt 
+      - name: Cppchecks
+        run: cppcheck *.cpp --enable=warning --error-exitcode=1
+      - name: Gplusplus Wall
+        run: g++ -Wall -Werror *.cpp
+      - name: Valgrind
+        run: valgrind --error-exitcode=1 --leak-check=full ./a.out units/ironman.json units/hulk.json

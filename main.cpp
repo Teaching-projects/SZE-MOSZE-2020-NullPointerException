@@ -1,15 +1,16 @@
 #include "Hero.h"
 #include <iostream>
+#include "AdvancedHero.h"
 
 
 
 int main(int argc, const char * argv[]) {
     try {
         if(argc == 3){
-            Hero *warrior1 = new Hero(Hero::parseUnit(argv[1]));
-            Hero *warrior2 = new Hero(Hero::parseUnit(argv[2]));
+            AdvancedHero *warrior1 = new AdvancedHero(AdvancedHero::parseUnit(argv[1]));
+            AdvancedHero *warrior2 = new AdvancedHero(AdvancedHero::parseUnit(argv[2]));
             
-            warrior1->Battle(warrior2);
+            warrior1->advancedBattle(warrior2);
             
             if(warrior1->isDead()){
                 std::cout << warrior2->getName() << " wins. Remaining HP: " << warrior2->getHP() << std::endl;
