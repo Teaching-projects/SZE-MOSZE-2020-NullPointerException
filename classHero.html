@@ -63,6 +63,8 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classHero-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Hero Class Reference</div>  </div>
@@ -73,6 +75,14 @@ $(function() {
  <a href="classHero.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="Hero_8h_source.html">Hero.h</a>&gt;</code></p>
+<div class="dynheader">
+Inheritance diagram for Hero:</div>
+<div class="dyncontent">
+<div class="center"><img src="classHero__inherit__graph.png" border="0" usemap="#Hero_inherit__map" alt="Inheritance graph"/></div>
+<map name="Hero_inherit__map" id="Hero_inherit__map">
+<area shape="rect" id="node2" href="classAdvancedHero.html" title="AdvancedHero class. " alt="" coords="5,80,113,107"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -92,10 +102,10 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a60e7b5be59457128423fee62b254721f">getDmg</a> () const</td></tr>
 <tr class="memdesc:a60e7b5be59457128423fee62b254721f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Const getter of the <a class="el" href="classHero.html" title="Hero class. ">Hero</a>'s damage. <br /></td></tr>
 <tr class="separator:a60e7b5be59457128423fee62b254721f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85f092a03c6ec94845df925275cbe9a0"><td class="memItemLeft" align="right" valign="top"><a id="a85f092a03c6ec94845df925275cbe9a0"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a85f092a03c6ec94845df925275cbe9a0">getAttackSpeed</a> () const</td></tr>
-<tr class="memdesc:a85f092a03c6ec94845df925275cbe9a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Const getter of the <a class="el" href="classHero.html" title="Hero class. ">Hero</a>'s attackspeed. <br /></td></tr>
-<tr class="separator:a85f092a03c6ec94845df925275cbe9a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac10c378c0951f28ffefd4d54c08a4f2e"><td class="memItemLeft" align="right" valign="top"><a id="ac10c378c0951f28ffefd4d54c08a4f2e"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#ac10c378c0951f28ffefd4d54c08a4f2e">getAttackCooldown</a> () const</td></tr>
+<tr class="memdesc:ac10c378c0951f28ffefd4d54c08a4f2e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Const getter of the <a class="el" href="classHero.html" title="Hero class. ">Hero</a>'s attackspeed. <br /></td></tr>
+<tr class="separator:ac10c378c0951f28ffefd4d54c08a4f2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4660e87e4fc691458e6b9d4f113dc3d3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a4660e87e4fc691458e6b9d4f113dc3d3">isDead</a> ()</td></tr>
 <tr class="memdesc:a4660e87e4fc691458e6b9d4f113dc3d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">This checks if the unit is dead or not.  <a href="#a4660e87e4fc691458e6b9d4f113dc3d3">More...</a><br /></td></tr>
 <tr class="separator:a4660e87e4fc691458e6b9d4f113dc3d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,6 +118,31 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a927e9b998701d26e7bfe439f1395926c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classHero.html">Hero</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a927e9b998701d26e7bfe439f1395926c">parseUnit</a> (const std::string &amp;fileName)</td></tr>
 <tr class="memdesc:a927e9b998701d26e7bfe439f1395926c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unit parsing from a JSON file.  <a href="#a927e9b998701d26e7bfe439f1395926c">More...</a><br /></td></tr>
 <tr class="separator:a927e9b998701d26e7bfe439f1395926c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a8515e282846fd8262e4fffca124d8e8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a8515e282846fd8262e4fffca124d8e8b">damaging</a> (<a class="el" href="classHero.html">Hero</a> *enemy)</td></tr>
+<tr class="memdesc:a8515e282846fd8262e4fffca124d8e8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taking damage to a target <a class="el" href="classHero.html" title="Hero class. ">Hero</a>.  <a href="#a8515e282846fd8262e4fffca124d8e8b">More...</a><br /></td></tr>
+<tr class="separator:a8515e282846fd8262e4fffca124d8e8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:abf1f2203c2cd11e1daf8b2abd82369cd"><td class="memItemLeft" align="right" valign="top"><a id="abf1f2203c2cd11e1daf8b2abd82369cd"></a>
+const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#abf1f2203c2cd11e1daf8b2abd82369cd">name</a></td></tr>
+<tr class="memdesc:abf1f2203c2cd11e1daf8b2abd82369cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the name of the <a class="el" href="classHero.html" title="Hero class. ">Hero</a>. <br /></td></tr>
+<tr class="separator:abf1f2203c2cd11e1daf8b2abd82369cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c9fab57f35d36398f2882121b048748"><td class="memItemLeft" align="right" valign="top"><a id="a9c9fab57f35d36398f2882121b048748"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a9c9fab57f35d36398f2882121b048748">hp</a></td></tr>
+<tr class="memdesc:a9c9fab57f35d36398f2882121b048748"><td class="mdescLeft">&#160;</td><td class="mdescRight">The health of the <a class="el" href="classHero.html" title="Hero class. ">Hero</a>, always changing during the fight. <br /></td></tr>
+<tr class="separator:a9c9fab57f35d36398f2882121b048748"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97ef904701f2fdea481e5e2095ce42e0"><td class="memItemLeft" align="right" valign="top"><a id="a97ef904701f2fdea481e5e2095ce42e0"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#a97ef904701f2fdea481e5e2095ce42e0">dmg</a></td></tr>
+<tr class="memdesc:a97ef904701f2fdea481e5e2095ce42e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The amount of damage he can hits with. <br /></td></tr>
+<tr class="separator:a97ef904701f2fdea481e5e2095ce42e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca3c809d52840b977d442ac1a5138e45"><td class="memItemLeft" align="right" valign="top"><a id="aca3c809d52840b977d442ac1a5138e45"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classHero.html#aca3c809d52840b977d442ac1a5138e45">attackspeed</a></td></tr>
+<tr class="memdesc:aca3c809d52840b977d442ac1a5138e45"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the attackspeed of the <a class="el" href="classHero.html" title="Hero class. ">Hero</a>. <br /></td></tr>
+<tr class="separator:aca3c809d52840b977d442ac1a5138e45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classHero.html" title="Hero class. ">Hero</a> class. </p>
@@ -136,6 +171,40 @@ Static Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">Target</td><td>hero </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8515e282846fd8262e4fffca124d8e8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8515e282846fd8262e4fffca124d8e8b">&#9670;&nbsp;</a></span>damaging()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Hero::damaging </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classHero.html">Hero</a> *&#160;</td>
+          <td class="paramname"><em>enemy</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Taking damage to a target <a class="el" href="classHero.html" title="Hero class. ">Hero</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">He</td><td>waits for a <a class="el" href="classHero.html" title="Hero class. ">Hero</a> type enemyThis method can take a damage to another <a class="el" href="classHero.html" title="Hero class. ">Hero</a> if his/her Health is not zero </td></tr>
   </table>
   </dd>
 </dl>
