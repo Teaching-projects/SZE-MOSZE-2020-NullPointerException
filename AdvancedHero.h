@@ -60,7 +60,7 @@ public:
      * \return Returns with an AdvancedHero type, with AdvancedHero parameters.
      */
     static AdvancedHero parseUnit(const std::string&);
-    std::string status() const;
+    std::string status() const; ///< Writes out the current status of the game
     
 };
 

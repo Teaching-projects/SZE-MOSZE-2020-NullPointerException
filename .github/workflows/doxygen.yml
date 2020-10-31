@@ -3,7 +3,7 @@ name: Doxygen doc
 on:
   push:
     branches:
-      - attackspeed
+      - documentation
       - gh-pages
 
 jobs:
