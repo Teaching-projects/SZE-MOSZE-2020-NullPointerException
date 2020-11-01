@@ -1,9 +1,18 @@
 OBJS := Hero.o AdvancedHero.o JsonParser.o main.o
 CC := g++
-CFLAGS := -std=c++17
+PNAME := a.out
+TESTUNITS := units/ironman.json units/hulk.json
+PUNITS := ./a.out $(TESTUNITS)
+CFLAGS := -std=c++17 -Wall -Werror
+CHFLAGS := --enable=warning,style,performance --output-file=report.txt
+CHWARFLAGS := --enable=warning --error-exitcode=1
+MEMFLAGS := --error-exitcode=1 --leak-check=full
+IODIFF := ./run_test.sh
+DOXCONF := doxconf
+
 
 build:
-    $(CC) $(CFLAGS) -o a.out $(OBJS)
+    $(CC) $(CFLAGS) -o $(PNAME) $(OBJS)
 
 Hero.o:
     $(CC) $(CFLAGS) -c Hero.cpp
@@ -16,3 +25,21 @@ JsonParser.o:
 
 main.o:
     $(CC) $(CFLAGS) -c main.cpp
+
+sca:
+    cppcheck *.cpp $(CHFLAGS)
+
+sca_warning:
+    cppcheck *.cpp $(CHWARFLAGS)
+
+memtest:
+    valgrind $(MEMFLAGS) $(PUNITS)
+
+gtest:
+    test/runTests
+
+io_diff_check:
+    $(IODIFF)
+
+doxygen:
+    doxygen $(DOXCONF)
