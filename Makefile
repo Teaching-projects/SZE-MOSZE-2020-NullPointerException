@@ -12,34 +12,34 @@ DOXCONF := doxconf
 
 
 build:
-    $(CC) $(CFLAGS) -o $(PNAME) $(OBJS)
+	$(CC) $(CFLAGS) -o $(PNAME) $(OBJS)
 
 Hero.o:
-    $(CC) $(CFLAGS) -c Hero.cpp
+	$(CC) $(CFLAGS) -c Hero.cpp
 
 AdvancedHero.o:
-    $(CC) $(CFLAGS) -c AdvancedHero.cpp
+	$(CC) $(CFLAGS) -c AdvancedHero.cpp
 
 JsonParser.o:
-    $(CC) $(CFLAGS) -c JsonParser.cpp
+	$(CC) $(CFLAGS) -c JsonParser.cpp
 
 main.o:
-    $(CC) $(CFLAGS) -c main.cpp
+	$(CC) $(CFLAGS) -c main.cpp
 
 sca:
-    cppcheck *.cpp $(CHFLAGS)
+	cppcheck *.cpp $(CHFLAGS)
 
 sca_warning:
-    cppcheck *.cpp $(CHWARFLAGS)
+	cppcheck *.cpp $(CHWARFLAGS)
 
 memtest:
-    valgrind $(MEMFLAGS) $(PUNITS)
+	valgrind $(MEMFLAGS) $(PUNITS)
 
 gtest:
-    test/runTests
+	test/runTests
 
 io_diff_check:
-    $(IODIFF)
+	$(IODIFF)
 
 doxygen:
-    doxygen $(DOXCONF)
+	doxygen $(DOXCONF)
