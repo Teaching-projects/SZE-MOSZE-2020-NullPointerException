@@ -1,4 +1,4 @@
-OBJS := Hero.o AdvancedHero.o JsonParser.o main.o
+OBJS := JsonParser.o Hero.o AdvancedHero.o main.o
 CC := g++
 PNAME := a.out
 TESTUNITS := units/ironman.json units/hulk.json
@@ -16,14 +16,14 @@ GTEST := test/runTests
 build:
 	$(CC) $(CFLAGS) -o $(PNAME) $(OBJS)
 
+JsonParser.o:
+	$(CC) $(CFLAGS) -c JsonParser.cpp
+
 Hero.o:
 	$(CC) $(CFLAGS) -c Hero.cpp
 
 AdvancedHero.o:
 	$(CC) $(CFLAGS) -c AdvancedHero.cpp
-
-JsonParser.o:
-	$(CC) $(CFLAGS) -c JsonParser.cpp
 
 main.o:
 	$(CC) $(CFLAGS) -c main.cpp
