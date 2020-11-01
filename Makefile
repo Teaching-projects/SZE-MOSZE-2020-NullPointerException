@@ -43,5 +43,5 @@ gtest:
 io_diff_check:
 	$(IODIFF)
 
-doxygen:
+documentation:
 	doxygen $(DOXCONF)
