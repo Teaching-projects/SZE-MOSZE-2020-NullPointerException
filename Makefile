@@ -17,16 +17,16 @@ build:
 	$(CC) $(CFLAGS) -o $(PNAME) $(OBJS)
 
 JsonParser.o:
-	$(CC) $(CFLAGS) -c JsonParser.cpp
+	$(CC) $(CFLAGS) -c JsonParser.cpp JsonParser.h
 
 Hero.o:
-	$(CC) $(CFLAGS) -c Hero.cpp
+	$(CC) $(CFLAGS) -c Hero.cpp Hero.h JsonParser.h
 
 AdvancedHero.o:
-	$(CC) $(CFLAGS) -c AdvancedHero.cpp
+	$(CC) $(CFLAGS) -c AdvancedHero.cpp AdvancedHero.h Hero.h JsonParser.h
 
 main.o:
-	$(CC) $(CFLAGS) -c main.cpp
+	$(CC) $(CFLAGS) -c main.cpp Hero.h JsonParser.h AdvancedHero.h
 
 sca:
 	cppcheck *.cpp $(CHFLAGS)
