@@ -76,7 +76,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a2de060e911682fb27fe89d69ecae980c"><td class="memItemLeft" align="right" valign="top">static const std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJsonParser.html#a2de060e911682fb27fe89d69ecae980c">StringFinder</a> (const std::string &amp;)</td></tr>
-<tr class="memdesc:a2de060e911682fb27fe89d69ecae980c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is used to find the hearo's attributes. It looks for the hero's name, health, damage and attackcooldown and maps them together.  <a href="#a2de060e911682fb27fe89d69ecae980c">More...</a><br /></td></tr>
+<tr class="memdesc:a2de060e911682fb27fe89d69ecae980c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is used to find the hero's attributes. It looks for the hero's name, health, damage and attackcooldown and maps them together.  <a href="#a2de060e911682fb27fe89d69ecae980c">More...</a><br /></td></tr>
 <tr class="separator:a2de060e911682fb27fe89d69ecae980c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a57ae294c3cf6e09f70936416f9b84a"><td class="memItemLeft" align="right" valign="top">static std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJsonParser.html#a1a57ae294c3cf6e09f70936416f9b84a">parser</a> (const std::string &amp;)</td></tr>
 <tr class="memdesc:a1a57ae294c3cf6e09f70936416f9b84a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is responsible to open the json files.  <a href="#a1a57ae294c3cf6e09f70936416f9b84a">More...</a><br /></td></tr>
@@ -146,7 +146,7 @@ Static Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>This method is responsible to open the json files. </p>
-<dl class="section return"><dt>Returns</dt><dd>Returns a Map if the json file exist. If there's a problem, we get a "not exist" warning. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Returns a Map if the json file exist. If there's a problem, we get a "not exist" runtime error. </dd></dl>
 
 </div>
 </div>
@@ -174,8 +174,8 @@ Static Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>This method is used to find the hearo's attributes. It looks for the hero's name, health, damage and attackcooldown and maps them together. </p>
-<dl class="section return"><dt>Returns</dt><dd>Returns the correct Map file of a hero if everythings good. If there's a problem we get a "Bad mapping" warning. </dd></dl>
+<p>This method is used to find the hero's attributes. It looks for the hero's name, health, damage and attackcooldown and maps them together. </p>
+<dl class="section return"><dt>Returns</dt><dd>Returns the correct Map file of a hero if everythings good. If there's a problem we get a "Bad mapping" runtime error. </dd></dl>
 
 </div>
 </div>
