@@ -3,7 +3,10 @@
 #include <fstream>
 #include <gtest/gtest.h>
 #include "../JsonParser.h"
+#include "../Hero.h"
+#include "../AdvancedHero.h"
 
+//JSONPARSER TESTS
 TEST(ParserTest, FilenameInputTest){
     std::map<std::string, std::string> expected;
     std::map<std::string, std::string> jsontest;
@@ -56,6 +59,77 @@ TEST(ParserTest, StringInputTest){
 
 TEST(ParserTest, JsonParserFailTest){
     ASSERT_THROW(JsonParser::parser("test/wrong_json.json"), std::runtime_error);
+}
+
+TEST(ParserTest, NotExistingFileHandling){
+    std::ifstream file("nonexists.json");
+    ASSERT_THROW(JsonParser::parseFile(file), std::runtime_error);
+}
+
+TEST(ParserTest, NotExistingFileNameHandling){
+    ASSERT_THROW(JsonParser::parser("notexists.json"), std::runtime_error);
+}
+
+
+//HERO TESTS
+TEST(HeroTest, isDeadTest){
+    Hero* p1 = new Hero(Hero::parseUnit("units/capt.json"));
+    Hero* p2 = new Hero(Hero::parseUnit("units/hulk.json"));
+    p1->Battle(p2);
+    
+    ASSERT_TRUE(p1->getHP() <= 0 || p2->getHP() <= 0);
+}
+
+TEST(HeroTest, BadParsingTest){
+    ASSERT_THROW(Hero::parseUnit("notexists.json"), std::runtime_error);
+}
+
+TEST(HeroTest, NotExistingMapTest){
+    ASSERT_THROW(Hero::parseUnit("wrong_json.json"), std::runtime_error);
+}
+
+TEST(HeroTest, NoThrowCheck){
+    Hero* p1 = new Hero(Hero::parseUnit("units/capt.json"));
+    Hero* p2 = new Hero(Hero::parseUnit("units/hulk.json"));
+    
+    EXPECT_NO_THROW(p1->Battle(p2));
+}
+
+//ADVANCEDHERO TESTS
+
+TEST(AdvancedHeroTest, isHpNotNegative){
+    AdvancedHero* p1 = new AdvancedHero(AdvancedHero::parseUnit("units/capt.json"));
+    AdvancedHero* p2 = new AdvancedHero(AdvancedHero::parseUnit("units/hulk.json"));
+    p1->advancedBattle(p2);
+    
+    ASSERT_TRUE(p1->getHP() >= 0 and p2->getHP() >= 0);
+}
+
+TEST(AdvancedHeroTest, isAdvancedHeroReallyLvlup){
+    AdvancedHero* p1 = new AdvancedHero(AdvancedHero::parseUnit("units/capt.json"));
+    AdvancedHero* p2 = new AdvancedHero(AdvancedHero::parseUnit("units/hulk.json"));
+    for(int i=1; i<3; i++){
+        p1->advancedDamage(p2);
+    }
+    
+    ASSERT_TRUE(p1->getLvl() > 1);
+    
+}
+
+TEST(AdvancedHeroTest, isAdvancedHeroReallyGetsXP){
+    AdvancedHero* p1 = new AdvancedHero(AdvancedHero::parseUnit("units/capt.json"));
+    AdvancedHero* p2 = new AdvancedHero(AdvancedHero::parseUnit("units/hulk.json"));
+    p1->advancedDamage(p2);
+    p2->advancedDamage(p1);
+    
+    ASSERT_TRUE(p1->getxp() > 0 and p2->getxp() > 0);
+}
+
+TEST(AdvancedHeroTest, NoThrowCheck){
+    AdvancedHero* p1 = new AdvancedHero(AdvancedHero::parseUnit("units/capt.json"));
+    AdvancedHero* p2 = new AdvancedHero(AdvancedHero::parseUnit("units/hulk.json"));
+    
+    EXPECT_NO_THROW(p1->advancedBattle(p2));
 }
 
 

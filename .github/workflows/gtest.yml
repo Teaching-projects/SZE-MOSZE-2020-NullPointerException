@@ -1,10 +1,6 @@
 name: Google test
 
-on: 
-  push:
-      branches:
-        - make
-        - master
+on: push
 
 
 jobs:
