@@ -2,7 +2,9 @@ name: Google test
 
 on: 
   push:
-      branches: [jsonparser]
+      branches:
+        - make
+        - master
 
 
 jobs:
@@ -18,4 +20,4 @@ jobs:
         run:  chmod +x test/unit_test.cpp
       - run: g++ -std=c++17 *.cpp -o unit_test
       - name: Run test
-        run: test/runTests
+        run: make gtest
