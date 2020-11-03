@@ -91,7 +91,7 @@ TEST(HeroTest, NotExistingMapTest){
 //ADVANCEDHERO TESTS
 TEST(AdvancedHeroTest, parsingAdvancedHeroTest){
     Hero* p1 = new Hero(Hero::parseUnit("test/test_warrior.json"));
-    AdvancedHero* p2 = new AdvancedHero(AdvancedHero::parseUnit("test_warrior.json"));
+    AdvancedHero* p2 = new AdvancedHero(AdvancedHero::parseUnit("test/test_warrior.json"));
     
     ASSERT_EQ(p1, p2);
 }
