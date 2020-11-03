@@ -35,8 +35,8 @@ private:
     
 public:
     AdvancedHero(const std::string&,int,const int,const double); ///< This is the contrustor. The constructor sets the parameters of the hero
-    int getLvl() const; ///< Const getter of the hero's level
-    int getxp() const;///< Const getter of the hero's xp
+    int getLvl() const { return lvl; }; ///< Const getter of the hero's level
+    int getxp() const; { return xp; }///< Const getter of the hero's xp
     
     /**
      * \brief Taking damage to a target Hero
