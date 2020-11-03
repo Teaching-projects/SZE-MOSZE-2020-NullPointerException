@@ -104,7 +104,7 @@ TEST(AdvancedHeroTest, isTheAttackspeedReallyChangesInBattle){
     
     p1->advancedBattle(p2);
     
-    ASSERT_TRUE(originalASp1 != p1->getAttackCooldown() || originalASp2 != p2->getAttackCooldown());
+    ASSERT_TRUE(originalASp1 != p1->getAttackCooldown() and originalASp2 != p2->getAttackCooldown());
 }
 
 TEST(AdvancedHeroTest, isHpNotNegative){
