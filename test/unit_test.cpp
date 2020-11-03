@@ -116,6 +116,15 @@ TEST(AdvancedHeroTest, isAdvancedHeroReallyLvlup){
     
 }
 
+TEST(AdvancedHeroTest, isAdvancedHeroReallyGetsXP){
+    AdvancedHero* p1 = new AdvancedHero(AdvancedHero::parseUnit("units/capt.json"));
+    AdvancedHero* p2 = new AdvancedHero(AdvancedHero::parseUnit("units/hulk.json"));
+    p1->advancedDamage(p2);
+    p2->advancedDamage(p1);
+    
+    ASSERT_TRUE(p1->getxp() > 0 and p2->getxp() > 0);
+}
+
 TEST(AdvancedHeroTest, NoThrowCheck){
     AdvancedHero* p1 = new AdvancedHero(AdvancedHero::parseUnit("units/capt.json"));
     AdvancedHero* p2 = new AdvancedHero(AdvancedHero::parseUnit("units/hulk.json"));
