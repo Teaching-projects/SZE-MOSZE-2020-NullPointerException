@@ -88,14 +88,14 @@ TEST(HeroTest, NotExistingMapTest){
     ASSERT_THROW(Hero::parseUnit("wrong_json.json"), std::runtime_error);
 }
 
-//ADVANCEDHERO TESTS
-TEST(AdvancedHeroTest, parsingAdvancedHeroTest){
-    Hero* p1 = new Hero(Hero::parseUnit("test/test_warrior.json"));
-    AdvancedHero* p2 = new AdvancedHero(AdvancedHero::parseUnit("test/test_warrior.json"));
+TEST(HeroTest, NoThrowCheck){
+    Hero* p1 = new Hero(Hero::parseUnit("units/capt.json"));
+    Hero* p2 = new Hero(Hero::parseUnit("units/hulk.json"));
     
-    ASSERT_EQ(p1, p2);
+    EXPECT_NO_THROW(p1->Battle(p2));
 }
 
+//ADVANCEDHERO TESTS
 
 TEST(AdvancedHeroTest, isHpNotNegative){
     AdvancedHero* p1 = new AdvancedHero(AdvancedHero::parseUnit("units/capt.json"));
@@ -114,6 +114,13 @@ TEST(AdvancedHeroTest, isAdvancedHeroReallyLvlup){
     
     ASSERT_TRUE(p1->getLvl() > 1);
     
+}
+
+TEST(AdvancedHeroTest, NoThrowCheck){
+    AdvancedHero* p1 = new AdvancedHero(AdvancedHero::parseUnit("units/capt.json"));
+    AdvancedHero* p2 = new AdvancedHero(AdvancedHero::parseUnit("units/hulk.json"));
+    
+    EXPECT_NO_THROW(p1->advancedBattle(p2));
 }
 
 
