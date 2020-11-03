@@ -90,35 +90,25 @@ TEST(HeroTest, NotExistingMapTest){
 
 //ADVANCEDHERO TESTS
 TEST(AdvancedHeroTest, parsingAdvancedHeroTest){
-    Hero* p1 = new Hero(Hero::parseUnit("test_warrior.json"));
+    Hero* p1 = new Hero(Hero::parseUnit("test/test_warrior.json"));
     AdvancedHero* p2 = new AdvancedHero(AdvancedHero::parseUnit("test_warrior.json"));
     
     ASSERT_EQ(p1, p2);
 }
 
-TEST(AdvancedHeroTest, isTheAttackspeedReallyChangesInBattle){
-    AdvancedHero* p1 = new AdvancedHero(AdvancedHero::parseUnit("units/capt.json"));
-    AdvancedHero* p2 = new AdvancedHero(AdvancedHero::parseUnit("units/hulk.json"));
-    double originalASp1 = p1->getAttackCooldown();
-    double originalASp2 = p2->getAttackCooldown();
-    
-    p1->advancedBattle(p2);
-    
-    ASSERT_TRUE(originalASp1 != p1->getAttackCooldown() and originalASp2 != p2->getAttackCooldown());
-}
 
 TEST(AdvancedHeroTest, isHpNotNegative){
     AdvancedHero* p1 = new AdvancedHero(AdvancedHero::parseUnit("units/capt.json"));
     AdvancedHero* p2 = new AdvancedHero(AdvancedHero::parseUnit("units/hulk.json"));
     p1->advancedBattle(p2);
     
-    ASSERT_TRUE(p1->getHP() > 0 && p2->getHP() > 0);
+    ASSERT_TRUE(p1->getHP() >= 0 and p2->getHP() >= 0);
 }
 
 TEST(AdvancedHeroTest, isAdvancedHeroReallyLvlup){
     AdvancedHero* p1 = new AdvancedHero(AdvancedHero::parseUnit("units/capt.json"));
     AdvancedHero* p2 = new AdvancedHero(AdvancedHero::parseUnit("units/hulk.json"));
-    for(int i=1; i<2; i++){
+    for(int i=1; i<3; i++){
         p1->advancedDamage(p2);
     }
     
