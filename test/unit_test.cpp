@@ -3,7 +3,10 @@
 #include <fstream>
 #include <gtest/gtest.h>
 #include "../JsonParser.h"
+#include "../Hero.h"
+#include "../AdvancedHero.h"
 
+//JSONPARSER TESTS
 TEST(ParserTest, FilenameInputTest){
     std::map<std::string, std::string> expected;
     std::map<std::string, std::string> jsontest;
@@ -56,6 +59,81 @@ TEST(ParserTest, StringInputTest){
 
 TEST(ParserTest, JsonParserFailTest){
     ASSERT_THROW(JsonParser::parser("test/wrong_json.json"), std::runtime_error);
+}
+
+TEST(ParserTest, NotExistingFileHandling){
+    ASSERT_THROW(JsonParser::parseFile("notexists.json"), std::runtime_error);
+}
+
+TEST(ParserTest, NotExistingFileHandling){
+    ASSERT_THROW(JsonParser::parser("notexists.json"), std::runtime_error);
+}
+
+
+//HERO TESTS
+TEST(HeroTest, isDeadTest){
+    Hero* p1 = Hero::parseUnit("units/capt.json");
+    Hero* p2 = Hero::parseUnit("units/hulk.json");
+    p1->Battle(p2);
+    
+    ASSERT_TRUE(p1->getHP() <= 0 || p2->getHP() <= 0);
+}
+
+TEST(HeroTest, isItActuallyDamaging){
+    Hero* p1 = Hero::parseUnit("units/capt.json");
+    Hero* p2 = Hero::parseUnit("units/hulk.json");
+    int originalHpP1 = p1->getHP();
+    int originalHpP2 = p2->getHP();
+    p1->damaging(p2);
+    p2->damaging(p1);
+    
+    ASSERT_TRUE(originalHpP1 != p1->getHP() && originalHpP2 != p2->getHP())
+}
+
+TEST(HeroTest, BadParsingTest){
+    ASSERT_THROW(Hero::parseUnit("notexists.json"), std::runtime_error);
+}
+
+TEST(HeroTest, NotExistingMapTest){
+    ASSERT_THROW(Hero::parseUnit("wrong_json.json"), std::runtime_error);
+}
+
+//ADVANCEDHERO TESTS
+TEST(AdvancedHeroTest, parsingAdvancedHeroTest){
+    Hero* p1 = Hero::parseUnit("test_warrior.json");
+    AdvancedHero* p2 = AdvancedHero::parseUnit("test_warrior.json");
+    
+    ASSERT_EQ(p1, p2);
+}
+
+TEST(AdvancedHeroTest, isTheAttackspeedReallyChangesInBattle){
+    AdvancedHero* p1 = AdvancedHero::parseUnit("units/capt.json");
+    AdvancedHero* p2 = AdvancedHero::parseUnit("units/hulk.json");
+    double originalASp1 = p1->getAttackCooldown();
+    double originalASp2 = p2->getAttackCooldown();
+    
+    p1->advancedBattle(p2);
+    
+    ASSERT_TRUE(originalASp1 != p1->getAttackCooldown() && originalASp2 != p2->getAttackCooldown());
+}
+
+TEST(AdvancedHeroTest, isHpNotNegative){
+    AdvancedHero* p1 = AdvancedHero::parseUnit("units/capt.json");
+    AdvancedHero* p2 = AdvancedHero::parseUnit("units/hulk.json");
+    p1->advancedBattle(p2);
+    
+    ASSERT_TRUE(p1->getHP() > 0 && p2->getHP() > 0);
+}
+
+TEST(AdvancedHeroTest, isAdvancedHeroReallyLvlup){
+    AdvancedHero* p1 = AdvancedHero::parseUnit("units/capt.json");
+    AdvancedHero* p2 = AdvancedHero::parseUnit("units/hulk.json");
+    for(int i=1; i<2; i++){
+        p1->advancedDamage(p2);
+    }
+    
+    ASSERT_TRUE(p1->getLvl() > 1)
+    
 }
 
 
