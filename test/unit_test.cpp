@@ -66,7 +66,7 @@ TEST(ParserTest, NotExistingFileHandling){
     ASSERT_THROW(JsonParser::parseFile(file), std::runtime_error);
 }
 
-TEST(ParserTest, NotExistingFileHandling){
+TEST(ParserTest, NotExistingFileNameHandling){
     ASSERT_THROW(JsonParser::parser("notexists.json"), std::runtime_error);
 }
 
@@ -104,7 +104,7 @@ TEST(AdvancedHeroTest, isTheAttackspeedReallyChangesInBattle){
     
     p1->advancedBattle(p2);
     
-    ASSERT_TRUE(originalASp1 != p1->getAttackCooldown() && originalASp2 != p2->getAttackCooldown());
+    ASSERT_TRUE(originalASp1 != p1->getAttackCooldown() || originalASp2 != p2->getAttackCooldown());
 }
 
 TEST(AdvancedHeroTest, isHpNotNegative){
@@ -122,7 +122,7 @@ TEST(AdvancedHeroTest, isAdvancedHeroReallyLvlup){
         p1->advancedDamage(p2);
     }
     
-    ASSERT_TRUE(p1->getLvl() > 1)
+    ASSERT_TRUE(p1->getLvl() > 1);
     
 }
 
