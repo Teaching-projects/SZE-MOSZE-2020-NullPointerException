@@ -10,6 +10,8 @@ std::map<std::string, std::string> JsonParser::parseFile(std::istream& istream){
         while(std::getline(istream, line)){
             Data += line;
         }
+    }else{
+        throw std::runtime_error("Wrong file.");
     }
     return JsonParser::StringFinder(Data);
 }
