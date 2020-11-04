@@ -4,7 +4,7 @@
 #include <gtest/gtest.h>
 #include "../JSON.h"
 #include "../Character.h"
-#include "../Character.h"
+#include "../Hero.h"
 
 //JSON TESTS
 TEST(ParserTest, FilenameInputTest){
