@@ -14,6 +14,7 @@
  */
 
 #include "Character.h"
+#include "Monster.h"
 
 #ifndef Hero_h
 #define Hero_h
@@ -51,7 +52,7 @@ public:
      *
      * \param Target hero
      */
-    void fightTilDeath(Hero& target);
+    void fightTilDeath(Monster* target);
 
     /**
      * \brief Unit parsing from a JSON file.

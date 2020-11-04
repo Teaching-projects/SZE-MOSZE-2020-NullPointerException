@@ -13,7 +13,7 @@ Hero Hero::parse(const std::string& filename){
     return Hero(Unit.getName(), Unit.getHealthPoints(), Unit.getDamage(), Unit.getAttackCoolDown());
 }
 
-void Hero::fightTilDeath(Hero* target){
+void Hero::fightTilDeath(Monster* target){
     double w1 = this->getAttackCoolDown();
     double w2 = target->getAttackCoolDown();
     double tempw1 = 0;
