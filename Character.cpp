@@ -11,18 +11,18 @@ const std::string& Character::getName() const{
 }
 
 //Getter of HP
-int Character::getHP() const{
+int Character::getHealthPoints() const{
     return hp;   
 }
 
 //Getter of Damage
-int Character::getDmg() const{
+int Character::getDamage() const{
     return dmg;
 }
 
 //Returns with boolean if the Character's HP is zero or lower.
-bool Character::isDead(){
-    if(getHP()<=0){
+bool Character::isAlive(){
+    if(getHealthPoints()>=0){
         return true;
     }else{
         return false;
@@ -42,14 +42,14 @@ void Character::damaging(Character *enemy){
 
 //Automatized battle method, according to the attackspeed
 void Character::Battle(Character* target){
-    double w1 = this->getAttackCooldown();
-    double w2 = target->getAttackCooldown();
+    double w1 = this->getAttackCoolDown();
+    double w2 = target->getAttackCoolDown();
     double tempw1 = 0;
     double tempw2 = 0;
     
     this->damaging(target);
   
-    while(!this->isDead() && !target->isDead()){
+    while(this->isAlive() && target->isAlive()){
         if(w1+tempw1 < w2+tempw2){
             tempw1 += w1;
             this->damaging(target);
@@ -64,14 +64,14 @@ void Character::Battle(Character* target){
 }
 
 //Getter of attackspeed
-double Character::getAttackCooldown() const{
+double Character::getAttackCoolDown() const{
     return attackspeed;
 }
 
 //Parsing an Unit from JSON file
 Character Character::parseUnit(const std::string& fileName){
     std::map<std::string, std::string> Map;
-    Map = JSON::parser(fileName);
+    Map = JSON::parseFromFile(fileName);
     if(Map.find("name") != Map.end() && Map.find("hp") != Map.end() && Map.find("dmg") != Map.end() && Map.find("attackcooldown") != Map.end()){
         return Character(Map["name"],stoi(Map["hp"]),stoi(Map["dmg"]), stod(Map["attackcooldown"]));
     }else{

@@ -36,16 +36,16 @@ public:
     Character(const std::string&, int, const int, const double); ///< This is the constructor. The constructor sets the parameters of the Hero
 
     const std::string& getName() const; ///< Const getter of the Hero's name
-    int getHP() const; ///< Const getter of the Hero's health
-    int getDmg() const; ///< Const getter of the Hero's damage
-    double getAttackCooldown() const; ///< Const getter of the Hero's attackspeed
+    int getHealthPoints() const; ///< Const getter of the Hero's health
+    int getDamage() const; ///< Const getter of the Hero's damage
+    double getAttackCoolDown() const; ///< Const getter of the Hero's attackspeed
     
     /**
      * \brief This checks if the unit is dead or not
      *
      * \return If unit health point is zero or lower. If lower than zero, it sets to default zero. (returns with true or false)
      */
-    bool isDead();
+    bool isAlive();
     
     /**
      * \brief This is an automatized Battle method. It takes damages to the target (with the damaging method) depending on the Hero's attackspeed.
