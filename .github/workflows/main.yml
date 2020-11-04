@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: g++ -std=c++17 *.cpp
+      - run: g++-10 -std=c++17 *.cpp -lstdc++fs
       - run: make io_diff_check
       - name: Install tools
         run: sudo apt-get install -y valgrind cppcheck
