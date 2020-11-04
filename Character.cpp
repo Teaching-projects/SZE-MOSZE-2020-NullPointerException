@@ -3,7 +3,7 @@
 
 
 
-Character::Character(const std::string& name, int hp, const int dmg, const double attackspeed) : name(name), hp(hp), dmg(dmg), attackspeed(attackspeed){}
+Character::Character(const std::string& name, int hp, int dmg, double attackspeed) : name(name), hp(hp), dmg(dmg), attackspeed(attackspeed){}
 
 //Getter of Character's name
 const std::string& Character::getName() const{

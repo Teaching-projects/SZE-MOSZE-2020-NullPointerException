@@ -33,7 +33,7 @@ protected:
     void damaging(Character *enemy); ///< This method can take a damage to another Hero if his/her Health is not zero
     
 public:
-    Character(const std::string&, int, const int, const double); ///< This is the constructor. The constructor sets the parameters of the Hero
+    Character(const std::string&, int, int, double); ///< This is the constructor. The constructor sets the parameters of the Hero
 
     const std::string& getName() const; ///< Const getter of the Hero's name
     int getHealthPoints() const; ///< Const getter of the Hero's health

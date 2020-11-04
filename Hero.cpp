@@ -5,7 +5,7 @@
 
 int Hero::xpHatar = 100;
 
-Hero::Hero(const std::string& name, int hp, const int dmg, const double as) : Character(name, hp, dmg, as), maxHp(hp){
+Hero::Hero(const std::string& name, int hp, int dmg, double as) : Character(name, hp, dmg, as), maxHp(hp){
 }
 
 Hero Hero::parse(const std::string& filename){
