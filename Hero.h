@@ -35,7 +35,7 @@ private:
     
 public:
     Hero(const std::string&,int,const int,const double); ///< This is the contrustor. The constructor sets the parameters of the hero
-    int getLvl() const { return lvl; }; ///< Const getter of the hero's level
+    int getLevel() const { return lvl; }; ///< Const getter of the hero's level
     int getxp() const { return xp; };///< Const getter of the hero's xp
     
     /**
@@ -50,7 +50,7 @@ public:
      *
      * \param Target hero
      */
-    void advancedBattle(Hero* target);
+    void fightTilDeath(Hero* target);
 
     /**
      * \brief Unit parsing from a JSON file.
@@ -59,7 +59,7 @@ public:
      *
      * \return Returns with an Hero type, with Hero parameters.
      */
-    static Hero parseUnit(const std::string&);
+    static Hero parse(const std::string&);
     std::string status() const; ///< Writes out the current status of the game
     
 };

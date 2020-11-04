@@ -8,23 +8,23 @@ int Hero::xpHatar = 100;
 Hero::Hero(const std::string& name, int hp, const int dmg, const double as) : Character(name, hp, dmg, as), maxHp(hp){
 }
 
-Hero Hero::parseUnit(const std::string& filename){
+Hero Hero::parse(const std::string& filename){
     Character Unit = Character::parseUnit(filename);
-    return Hero(Unit.getName(), Unit.getHP(), Unit.getDmg(), Unit.getAttackCooldown());
+    return Hero(Unit.getName(), Unit.getHealthPoints(), Unit.getDamage(), Unit.getAttackCoolDown());
 }
 
-void Hero::advancedBattle(Hero* target){
-    double w1 = this->getAttackCooldown();
-    double w2 = target->getAttackCooldown();
+void Hero::fightTilDeath(Hero* target){
+    double w1 = this->getAttackCoolDown();
+    double w2 = target->getAttackCoolDown();
     double tempw1 = 0;
     double tempw2 = 0;
     
     this->advancedDamage(target);
     
-    while(!this->isDead() && !target->isDead()){
+    while(this->isAlive() && target->isAlive()){
         
-        w1 = this->getAttackCooldown();
-        w2 = target->getAttackCooldown();
+        w1 = this->getAttackCoolDown();
+        w2 = target->getAttackCoolDown();
         
         if(w1+tempw1 < w2+tempw2){
             tempw1 += w1;
@@ -40,7 +40,7 @@ void Hero::advancedBattle(Hero* target){
 }
 
 void Hero::advancedDamage(Hero* enemy){
-    xp += std::min(dmg, enemy->getHP());
+    xp += std::min(dmg, enemy->getHealthPoints());
     this->damaging(enemy);
     levelup(this->xp / xpHatar);
 }
@@ -49,7 +49,7 @@ void Hero::levelup(int levelcount){
     for(int i=0; i<levelcount; i++){
         maxHp = (int)round((double)maxHp * 1.1);
         dmg = (int)round((double)dmg * 1.1);
-        attackspeed = getAttackCooldown()*0.9;
+        attackspeed = getAttackCoolDown()*0.9;
         hp = maxHp;
         lvl++;
         xp -= xpHatar;
