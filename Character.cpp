@@ -49,7 +49,7 @@ void Character::fightTilDeath(Character &target){
     
     this->damaging(target);
     
-    while(!this->isAlive() && !target.isAlive()){
+    while(hp > 0 && target.getHealthPoints() > 0){
         w1 = this->getAttackCoolDown();
         w2 = target.getAttackCoolDown();
         
