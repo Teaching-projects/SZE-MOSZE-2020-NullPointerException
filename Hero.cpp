@@ -1,82 +1,63 @@
 #include "Hero.h"
-#include "JsonParser.h"
+#include <iostream>
+#include <cmath>
 
 
+int Hero::xpHatar = 100;
 
-Hero::Hero(const std::string& name, int hp, const int dmg, const double attackspeed) : name(name), hp(hp), dmg(dmg), attackspeed(attackspeed){}
-
-//Getter of Hero's name
-const std::string& Hero::getName() const{
-    return name;   
+Hero::Hero(const std::string& name, int hp, const int dmg, const double as) : Character(name, hp, dmg, as), maxHp(hp){
 }
 
-//Getter of HP
-int Hero::getHP() const{
-    return hp;   
+Hero Hero::parseUnit(const std::string& filename){
+    Character Unit = Character::parseUnit(filename);
+    return Hero(Unit.getName(), Unit.getHP(), Unit.getDmg(), Unit.getAttackCooldown());
 }
 
-//Getter of Damage
-int Hero::getDmg() const{
-    return dmg;
-}
-
-//Returns with boolean if the Hero's HP is zero or lower.
-bool Hero::isDead(){
-    if(getHP()<=0){
-        return true;
-    }else{
-        return false;
-    }
-}
-
-//Taking damage to an enemy Hero if the HP is not zero.
-void Hero::damaging(Hero *enemy){
-    if(hp > 0){
-        if((enemy->hp - dmg) > 0){
-            enemy->hp -= dmg;
-        }else{
-            enemy->hp = 0;
-        }
-    }   
-}
-
-//Automatized battle method, according to the attackspeed
-void Hero::Battle(Hero* target){
+void Hero::advancedBattle(Hero* target){
     double w1 = this->getAttackCooldown();
     double w2 = target->getAttackCooldown();
     double tempw1 = 0;
     double tempw2 = 0;
     
-    this->damaging(target);
-  
+    this->advancedDamage(target);
+    
     while(!this->isDead() && !target->isDead()){
+        
+        w1 = this->getAttackCooldown();
+        w2 = target->getAttackCooldown();
+        
         if(w1+tempw1 < w2+tempw2){
             tempw1 += w1;
-            this->damaging(target);
+            this->advancedDamage(target);
         }else if(w1+tempw1 > w2+tempw2){
             tempw2 += w2;
-            target->damaging(this);
+            target->advancedDamage(this);
         }else{ //Alapertelmezett utes ha mindkettojuknek egyforma az attackspeed
             tempw1 += w1;
-            this->damaging(target);
+            this->advancedDamage(target);
         }
     }
 }
 
-//Getter of attackspeed
-double Hero::getAttackCooldown() const{
-    return attackspeed;
+void Hero::advancedDamage(Hero* enemy){
+    xp += std::min(dmg, enemy->getHP());
+    this->damaging(enemy);
+    levelup(this->xp / xpHatar);
 }
 
-//Parsing an Unit from JSON file
-Hero Hero::parseUnit(const std::string& fileName){
-    std::map<std::string, std::string> Map;
-    Map = JsonParser::parser(fileName);
-    if(Map.find("name") != Map.end() && Map.find("hp") != Map.end() && Map.find("dmg") != Map.end() && Map.find("attackcooldown") != Map.end()){
-        return Hero(Map["name"],stoi(Map["hp"]),stoi(Map["dmg"]), stod(Map["attackcooldown"]));
-    }else{
-        throw std::runtime_error("Bad mapping");
+void Hero::levelup(int levelcount){
+    for(int i=0; i<levelcount; i++){
+        maxHp = (int)round((double)maxHp * 1.1);
+        dmg = (int)round((double)dmg * 1.1);
+        attackspeed = getAttackCooldown()*0.9;
+        hp = maxHp;
+        lvl++;
+        xp -= xpHatar;
     }
-    
-    
+}
+
+std::string Hero::status() const{
+        
+    return name + ": HP:" + std::to_string(hp) + " DMG: " + std::to_string(dmg)
+    + " XP: " + std::to_string(xp) + " LVL: " + std::to_string(lvl) + "AS: " + std::to_string(attackspeed);
 }

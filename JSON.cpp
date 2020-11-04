@@ -1,9 +1,9 @@
-#include "JsonParser.h"
+#include "JSON.h"
 #include <iostream>
 #include <fstream>
 #include <string>
 
-std::map<std::string, std::string> JsonParser::parseFile(std::istream& istream){
+std::map<std::string, std::string> JSON::parseFile(std::istream& istream){
     std::string Data;
     if(istream.good()){
         std::string line = "";
@@ -13,15 +13,15 @@ std::map<std::string, std::string> JsonParser::parseFile(std::istream& istream){
     }else{
         throw std::runtime_error("Wrong file.");
     }
-    return JsonParser::StringFinder(Data);
+    return JSON::StringFinder(Data);
 }
 
-std::map<std::string, std::string> JsonParser::parser(const std::string& Filename){
+std::map<std::string, std::string> JSON::parser(const std::string& Filename){
     std::ifstream jsonFile;
     std::map<std::string, std::string> Map;
     jsonFile.open(Filename);
     if(jsonFile.is_open()){
-        Map = JsonParser::parseFile(jsonFile);
+        Map = JSON::parseFile(jsonFile);
         jsonFile.close();
         return Map;
     }else{
@@ -30,7 +30,7 @@ std::map<std::string, std::string> JsonParser::parser(const std::string& Filenam
     
 }
 
-const std::map<std::string, std::string> JsonParser::StringFinder(const std::string& Data){
+const std::map<std::string, std::string> JSON::StringFinder(const std::string& Data){
     std::map<std::string, std::string> Map;
     std::string readline,name,hp,dmg,as  = "";
     bool ertek = false;
@@ -83,7 +83,7 @@ const std::map<std::string, std::string> JsonParser::StringFinder(const std::str
     }
 }
 
-std::string JsonParser::WhitespaceCleanerAndFormatChecker(std::string& string){
+std::string JSON::WhitespaceCleanerAndFormatChecker(std::string& string){
     int wsc = 0;
     if(string != ""){
         for(unsigned i = 0; i < string.length(); i++){

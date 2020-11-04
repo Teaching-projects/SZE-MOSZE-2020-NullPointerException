@@ -13,12 +13,12 @@
  *
  */
 
-#ifndef JsonParser_h
-#define JsonParser_h
+#ifndef JSON_h
+#define JSON_h
 #include <map>
 
 //This is the class of the JsonParser
-class JsonParser{
+class JSON{
 private:
     
     /**
@@ -54,4 +54,4 @@ public:
     static std::map<std::string, std::string> parseFile(std::istream&);
 };
 
-#endif /* JsonParser_h */
+#endif /* JSON_h */
