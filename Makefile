@@ -1,10 +1,10 @@
-OBJS := JsonParser.o Hero.o AdvancedHero.o main.o
-CC := g++
+OBJS := JSON.o Character.o Hero.o main.o
+CC := g++-10
 PNAME := a.out
 TESTUNITS := units/ironman.json units/hulk.json
 PUNITS := ./a.out $(TESTUNITS)
 
-CFLAGS := -std=c++17 -Wall -Werror
+CFLAGS := -std=c++17 -Wall -Werror -lstdc++fs
 CHFLAGS := --enable=warning,style,performance --output-file=report.txt
 CHWARFLAGS := --enable=warning --error-exitcode=1
 MEMFLAGS := --error-exitcode=1 --leak-check=full
@@ -16,17 +16,17 @@ GTEST := test/runTests
 build:
 	$(CC) $(CFLAGS) -o $(PNAME) $(OBJS)
 
-JsonParser.o:
-	$(CC) $(CFLAGS) -c JsonParser.cpp JsonParser.h
+JSON.o:
+	$(CC) $(CFLAGS) -c JSON.cpp JSON.h
+
+Character.o:
+	$(CC) $(CFLAGS) -c Character.cpp Character.h JSON.h
 
 Hero.o:
-	$(CC) $(CFLAGS) -c Hero.cpp Hero.h JsonParser.h
-
-AdvancedHero.o:
-	$(CC) $(CFLAGS) -c AdvancedHero.cpp AdvancedHero.h Hero.h JsonParser.h
+	$(CC) $(CFLAGS) -c Hero.cpp Hero.h Character.h JSON.h
 
 main.o:
-	$(CC) $(CFLAGS) -c main.cpp Hero.h JsonParser.h AdvancedHero.h
+	$(CC) $(CFLAGS) -c main.cpp Character.h JSON.h Hero.h
 
 sca:
 	cppcheck *.cpp $(CHFLAGS)
