@@ -16,7 +16,7 @@ std::map<std::string, std::string> JSON::parseFile(std::istream& istream){
     return JSON::StringFinder(Data);
 }
 
-std::map<std::string, std::string> JSON::parser(const std::string& Filename){
+std::map<std::string, std::string> JSON::parseFromFile(const std::string& Filename){
     std::ifstream jsonFile;
     std::map<std::string, std::string> Map;
     jsonFile.open(Filename);
