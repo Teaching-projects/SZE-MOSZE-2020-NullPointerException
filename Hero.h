@@ -45,14 +45,8 @@ public:
      *
      * \param He waits for a Hero type enemy
      */
-    void advancedDamage(Hero* enemy); ///< This method damages the enemy and increases the hero's xp
+    void damaging(Hero* enemy); ///< This method damages the enemy and increases the hero's xp
     
-    /**
-     * \brief This is an automatized Battle method. It takes damages to the target (with the advancedDamage method) depending on the Hero's attackspeed.
-     *
-     * \param Target hero
-     */
-    void fightTilDeath(Monster* target);
 
     /**
      * \brief Unit parsing from a JSON file.

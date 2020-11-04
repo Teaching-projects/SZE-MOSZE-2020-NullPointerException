@@ -13,33 +13,7 @@ Hero Hero::parse(const std::string& filename){
     return Hero(Unit.getName(), Unit.getHealthPoints(), Unit.getDamage(), Unit.getAttackCoolDown());
 }
 
-void Hero::fightTilDeath(Monster* target){
-    double w1 = this->getAttackCoolDown();
-    double w2 = target->getAttackCoolDown();
-    double tempw1 = 0;
-    double tempw2 = 0;
-    
-    this->advancedDamage(target);
-    
-    while(this->isAlive() && target->isAlive()){
-        
-        w1 = this->getAttackCoolDown();
-        w2 = target->getAttackCoolDown();
-        
-        if(w1+tempw1 < w2+tempw2){
-            tempw1 += w1;
-            this->advancedDamage(target);
-        }else if(w1+tempw1 > w2+tempw2){
-            tempw2 += w2;
-            target->advancedDamage(this);
-        }else{ //Alapertelmezett utes ha mindkettojuknek egyforma az attackspeed
-            tempw1 += w1;
-            this->advancedDamage(target);
-        }
-    }
-}
-
-void Hero::advancedDamage(Hero* enemy){
+void Hero::damaging(Hero* enemy){
     xp += std::min(dmg, enemy->getHealthPoints());
     this->damaging(enemy);
     levelup(this->xp / xpHatar);

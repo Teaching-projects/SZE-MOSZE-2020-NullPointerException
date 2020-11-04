@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "Monster.h"
 
-Monster::Monster(const std::string& name, int hp, int dmg, double as) : Character(name, hp, dmg, as) {}
+Monster::Monster(const std::string& name, int hp, int dmg, double attackspeed) : Character(name, hp, dmg, attackspeed) {}
 
 Monster Monster::parse(const std::string& filename){
     JSON MonsterMap = JSON::parseFromFile(filename);
