@@ -14,7 +14,6 @@ Hero Hero::parse(const std::string& filename){
 }
 
 void Hero::damaging(Hero &enemy){
-    
     xp += std::min(dmg, enemy.getHealthPoints());
     levelup(this->xp / xpHatar);
 }

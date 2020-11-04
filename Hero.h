@@ -45,7 +45,7 @@ public:
      *
      * \param He waits for a Hero type enemy
      */
-    void damaging(Hero &enemy); ///< This method damages the enemy and increases the hero's xp
+    void damaging(Hero &enemy) override; ///< This method damages the enemy and increases the hero's xp
     
 
     /**

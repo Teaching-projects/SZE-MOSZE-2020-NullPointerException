@@ -52,7 +52,7 @@ public:
      *
      * \param Target hero
      */
-    virtual void fightTilDeath(Character&);
+    void fightTilDeath(Character&);
     
     /**
      * \brief Unit parsing from a JSON file.
