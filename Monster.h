@@ -6,7 +6,7 @@
 class Monster : public Character{
 public:
     Monster(const std::string& name, int healthpoints, int damage, double attackcooldown);
-    static Monster parse(std::string& filename);
+    static Monster parse(const std::string& filename);
     
 };
 
