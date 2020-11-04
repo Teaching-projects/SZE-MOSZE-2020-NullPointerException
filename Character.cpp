@@ -41,15 +41,18 @@ void Character::damaging(Character *enemy){
 }
 
 //Automatized battle method, according to the attackspeed
-void Character::Battle(Character* target){
+void Character::fightTilDeath(Character* target){
     double w1 = this->getAttackCoolDown();
     double w2 = target->getAttackCoolDown();
     double tempw1 = 0;
     double tempw2 = 0;
     
     this->damaging(target);
-  
+    
     while(this->isAlive() && target->isAlive()){
+        w1 = this->getAttackCoolDown();
+        w2 = target->getAttackCoolDown();
+        
         if(w1+tempw1 < w2+tempw2){
             tempw1 += w1;
             this->damaging(target);
