@@ -30,35 +30,35 @@ bool Character::isAlive(){
 }
 
 //Taking damage to an enemy Character if the HP is not zero.
-void Character::damaging(Character *enemy){
+void Character::damaging(Character &enemy){
     if(hp > 0){
-        if((enemy->hp - dmg) > 0){
-            enemy->hp -= dmg;
+        if((enemy.hp - dmg) > 0){
+            enemy.hp -= dmg;
         }else{
-            enemy->hp = 0;
+            enemy.hp = 0;
         }
     }   
 }
 
 //Automatized battle method, according to the attackspeed
-void Character::fightTilDeath(Character* target){
+void Character::fightTilDeath(Character &target){
     double w1 = this->getAttackCoolDown();
-    double w2 = target->getAttackCoolDown();
+    double w2 = target.getAttackCoolDown();
     double tempw1 = 0;
     double tempw2 = 0;
     
     this->damaging(target);
     
-    while(this->isAlive() && target->isAlive()){
+    while(this->isAlive() && target.isAlive()){
         w1 = this->getAttackCoolDown();
-        w2 = target->getAttackCoolDown();
+        w2 = target.getAttackCoolDown();
         
         if(w1+tempw1 < w2+tempw2){
             tempw1 += w1;
             this->damaging(target);
         }else if(w1+tempw1 > w2+tempw2){
             tempw2 += w2;
-            target->damaging(this);
+            target.damaging(*this);
         }else{ //Alapertelmezett utes ha mindkettojuknek egyforma az attackspeed
             tempw1 += w1;
             this->damaging(target);

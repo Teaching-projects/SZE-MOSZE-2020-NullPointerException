@@ -30,7 +30,7 @@ protected:
      *
      * \param He waits for a Hero type enemy
      */
-    virtual void damaging(Character *enemy); ///< This method can take a damage to another Hero if his/her Health is not zero
+    virtual void damaging(Character &enemy); ///< This method can take a damage to another Hero if his/her Health is not zero
     
 public:
     Character(const std::string&, int, int, double); ///< This is the constructor. The constructor sets the parameters of the Hero
@@ -52,7 +52,7 @@ public:
      *
      * \param Target hero
      */
-    virtual void fightTilDeath(Character*);
+    virtual void fightTilDeath(Character&);
     
     /**
      * \brief Unit parsing from a JSON file.
