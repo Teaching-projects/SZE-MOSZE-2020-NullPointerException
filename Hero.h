@@ -37,6 +37,7 @@ public:
     Hero(const std::string&,int,int,double); ///< This is the contrustor. The constructor sets the parameters of the hero
     int getLevel() const { return lvl; }; ///< Const getter of the hero's level
     int getxp() const { return xp; };///< Const getter of the hero's xp
+    int getMaxHealthPoints() const { return maxHp; }
     
     /**
      * \brief Taking damage to a target Hero
@@ -50,7 +51,7 @@ public:
      *
      * \param Target hero
      */
-    void fightTilDeath(Hero* target);
+    void fightTilDeath(Hero& target);
 
     /**
      * \brief Unit parsing from a JSON file.
