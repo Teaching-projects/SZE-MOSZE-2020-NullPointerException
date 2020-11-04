@@ -102,7 +102,7 @@ TEST(HeroTest, isHpNotNegative){
     Hero p2 = Hero::parse("units/hulk.json");
     p1.fightTilDeath(p2);
     
-    ASSERT_TRUE(p1.getHealthPoint() >= 0 and p2.getHealthPoint() >= 0);
+    ASSERT_TRUE(p1.getHealthPoints() >= 0 and p2.getHealthPoints() >= 0);
 }
 
 TEST(HeroTest, isAdvancedHeroReallyLvlup){
@@ -117,8 +117,8 @@ TEST(HeroTest, isAdvancedHeroReallyLvlup){
 }
 
 TEST(HeroTest, isAdvancedHeroReallyGetsXP){
-    Hero p1 = new Hero(Hero::parse("units/capt.json"));
-    Hero p2 = new Hero(Hero::parse("units/hulk.json"));
+    Hero p1 = Hero::parse("units/capt.json");
+    Hero p2 = Hero::parse("units/hulk.json");
     p1.fightTilDeath(p2);
     p2.fightTilDeath(p1);
     
@@ -126,8 +126,8 @@ TEST(HeroTest, isAdvancedHeroReallyGetsXP){
 }
 
 TEST(HeroTest, NoThrowCheck){
-    Hero p1 = new Hero(Hero::parse("units/capt.json"));
-    Hero p2 = new Hero(Hero::parse("units/hulk.json"));
+    Hero p1 = Hero::parse("units/capt.json");
+    Hero p2 = Hero::parse("units/hulk.json");
     
     EXPECT_NO_THROW(p1.fightTilDeath(p2));
 }
