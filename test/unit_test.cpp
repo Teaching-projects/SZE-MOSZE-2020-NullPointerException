@@ -37,7 +37,7 @@ TEST(ParserTest, FileInputTest){
 
 TEST(ParserTest, StringInputTest){
     std::string stringjson =
-    "{\n\t\"name\"  :  \"Monster\",\n\t\"hp\":10000,\n\t\"dmg\":100,\n\t\"attackcooldown\":2, \n}";
+    "{\n\t\"name\"  :  \"Monster\",\n\t\"health_points\":10000,\n\t\"damage\":100,\n\t\"attack_cooldown\":2 \n}";
     
     JSON jsontest = JSON::StringFinder(stringjson);
     
