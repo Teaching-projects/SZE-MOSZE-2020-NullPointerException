@@ -1,0 +1,4 @@
+{
+    "hero" : "units/batman.json",
+    "monsters" : " units/capt.json units/hulk.json units/ironman.json "
+}
