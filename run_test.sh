@@ -9,6 +9,7 @@ touch output.txt
 ./a.out units/hulk.json units/ironman.json >> output.txt
 ./a.out units/ironman.json units/hulk.json >> output.txt
 ./a.out units/ironman.json units/capt.json >> output.txt
+./a.out scenario1.json >> output.txt
 
 diff output.txt units/results.txt
 
