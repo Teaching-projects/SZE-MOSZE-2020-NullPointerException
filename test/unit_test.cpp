@@ -11,9 +11,8 @@
 
 //JSON TESTS
 TEST(ParserTest, FilenameInputTest){
-    JSON jsontest;
     
-    jsontest = JSON::parseFromFile("test/test_warrior.json");
+    JSON jsontest = JSON::parseFromFile("test/test_warrior.json");
     
     ASSERT_EQ(jsontest.get<std::string>("name"), "Monster");
     ASSERT_EQ(jsontest.get<int>("health_points"), 10000);
@@ -23,13 +22,12 @@ TEST(ParserTest, FilenameInputTest){
 }
 
 TEST(ParserTest, FileInputTest){
-    JSON jsontest;
     
     std::string filename("test/test_warrior.json");
     
     std::ifstream fileinput(filename);
     
-    jsontest = JSON::parseFile(fileinput);
+    JSON jsontest = JSON::parseFile(fileinput);
     
     ASSERT_EQ(jsontest.get<std::string>("name"), "Monster");
     ASSERT_EQ(jsontest.get<int>("health_points"), 10000);
