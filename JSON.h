@@ -7,7 +7,7 @@
  *
  * \author NullPointerException
  *
- * \version 1.0
+ * \version 2.0
  *
  * \date 2020/11/01 11:00
  *
@@ -25,7 +25,7 @@
 class JSON{
 private:
     
-    std::map<std::string, std::any> map;
+    std::map<std::string, std::any> map; ///< This is the default value (map) of the JSON class
     
     /**s
      * \brief After the json files data goes through the stringfinder method, the given string is then analized in this method. This method deletes the unnecessary spaces from the beginning. Also it looks if the string has any value.
@@ -38,8 +38,7 @@ private:
 
 public:
     
-    //-- Ctor létrehozás
-    JSON(std::map<std::string, std::any> map_) : map(map_) {}
+    JSON(std::map<std::string, std::any> map_) : map(map_) {} ///< This is the contrustor. The constructor sets the map parameter of the JSON
     
     /**
      * \brief This method is used to find the hero's attributes. It looks for the hero's name, health, damage and attackcooldown and maps them together.
@@ -62,13 +61,25 @@ public:
      */
     static std::map<std::string, std::any> parseFile(std::istream&);
     
-    // --Exception kezelés
-    class ParseException : public std::exception {};
     
-    //Count getter
+    class ParseException : public std::exception {}; ///< It is an inherit from std::exception
+    
+    /**
+     * \brief This counts the JSON map datakeys
+     *
+     * \param Gets a string key of the map
+     *
+     * \return Returns with the count of the map.
+     */
     const unsigned long count(const std::string& key) const { return map.count(key); }
     
-    //getMap
+    /**
+     * \brief This is a converter to get a value from the map. It can convert to string, int, double.
+     *
+     * \param Gets a string key of the map
+     *
+     * \return Returns with the converted type value.
+     */
     template <typename T>
     T get(const std::string& key){
         std::string value =  std::any_cast<std::string>(map[key]);

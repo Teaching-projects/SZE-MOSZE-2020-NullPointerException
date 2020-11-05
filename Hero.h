@@ -7,7 +7,7 @@
  *
  * \author NullPointerException
  *
- * \version 1.0
+ * \version 2.0
  *
  * \date 2020/10/31 17:00
  *
@@ -23,8 +23,8 @@
 class Hero : public Character {
 private:
     int xpHatar; ///< This is the ammount of xp the hero has to collect to level up
-    int hpBonus, dmgBonus;
-    double CDBonus;
+    int hpBonus, dmgBonus;///< This gets from the JSON files. These describes the Hero's healthpoint and damage bonuses when he level up
+    double CDBonus; ///< This is an AttackCooldown bonus when he level up.
     int maxHp = hp; ///< This is the max health of the Hero, which increases with the level
     int xp = 0; ///< The xp starts at 0, and with each battle he collects xp
     int lvl = 1; ///< The hero starts at level 1, and according to the xp earned, he can level up to be more powerful
@@ -35,6 +35,12 @@ private:
      * \param The hero's actual level
      */
     void levelup(int);
+    
+    /**
+     * \brief This method gains the XP when he take a hit
+     *
+     * \param a Character type enemy
+     */
     void gainXP(Character& enemy);
     
 public:
@@ -58,6 +64,7 @@ public:
      * \return Returns with an Hero type, with Hero parameters.
      */
     static Hero parse(const std::string&);
+    
     std::string status() const; ///< Writes out the current status of the game
     
 };
