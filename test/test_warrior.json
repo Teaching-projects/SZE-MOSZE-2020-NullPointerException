@@ -1,6 +1,6 @@
 {
     "name" : "Monster",
-    "hp" : 10000,
-    "dmg" : 100,
-    "attackcooldown" : 2
+    "health_points" : 10000,
+    "damage" : 100,
+    "attack_cooldown" : 2
 }

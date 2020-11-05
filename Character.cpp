@@ -73,4 +73,10 @@ double Character::getAttackCoolDown() const{
     return attackspeed;
 }
 
+Character Character::parseUnit(const std::string& fileName){
+    JSON CharMap = JSON::parseFromFile(fileName);
+    
+    return Character(CharMap.get<std::string>("name"), CharMap.get<int>("health_points"), CharMap.get<int>("damage"), CharMap.get<double>("attack_cooldown"));
+}
+
 
