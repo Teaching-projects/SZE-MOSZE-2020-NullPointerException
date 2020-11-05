@@ -20,7 +20,6 @@
 #include <fstream>
 #include <streambuf>
 #include <unordered_set>
-#include <variant>
 
 //This is the class of the JsonParser
 class JSON{

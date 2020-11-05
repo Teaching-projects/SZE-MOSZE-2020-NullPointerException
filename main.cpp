@@ -12,6 +12,8 @@
 #include "Monster.h"
 
 
+
+
 const std::map<int,std::string> error_messages = {
     { 1 , "Bad number of arguments. Only a single scenario file should be provided." },
     { 2 , "The provided scenario file is not accessible." },
@@ -68,4 +70,3 @@ int main(int argc, char** argv){
     } catch (const JSON::ParseException& e) {bad_exit(4);}
     return 0;
 }
-

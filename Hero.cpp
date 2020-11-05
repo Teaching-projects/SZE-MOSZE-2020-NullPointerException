@@ -1,5 +1,4 @@
 #include "Hero.h"
-#include <iostream>
 #include <cmath>
 
 Hero::Hero(const std::string& name, int hp, int dmg, double as, int xpHatar, int hpBonus, int dmgBonus, double CDBonus) : Character(name, hp, dmg, as){

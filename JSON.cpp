@@ -1,9 +1,7 @@
 #include "JSON.h"
-#include <iostream>
 #include <fstream>
 #include <string>
 #include <any>
-#include <variant>
 
 std::map<std::string, std::any> JSON::parseFile(std::istream& istream){
     std::string Data;
@@ -46,7 +44,6 @@ const std::map<std::string, std::any> JSON::StringFinder(const std::string& Data
             ertek = true;
         }else if ((Data[i] == ',' or Data[i] == '}') and isStringValue == false){
             ertek = false;
-            //std::cout << WhitespaceCleanerAndFormatChecker(key) << std::endl << WhitespaceCleanerAndFormatChecker(value) << std::endl;
             Map.insert(std::pair<std::string, std::any>(WhitespaceCleanerAndFormatChecker(key),WhitespaceCleanerAndFormatChecker(value)));
             key = "";
             value = "";
