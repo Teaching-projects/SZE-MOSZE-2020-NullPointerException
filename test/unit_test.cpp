@@ -2,6 +2,8 @@
 #include <map>
 #include <fstream>
 #include <any>
+#include <stdio.h>
+#include <stdlib.h>
 #include <gtest/gtest.h>
 #include "../JSON.h"
 #include "../Character.h"
@@ -97,16 +99,16 @@ TEST(CharacterTest, NoThrowCheck){
 //Hero TESTS
 
 TEST(HeroTest, isHpNotNegative){
-    Hero p1 = Hero::parse("../Dark_Wanderer.json");
-    Hero p2 = Hero::parse("../Dark_Wanderer.json");
+    Hero p1 = Hero::parse("Dark_Wanderer.json");
+    Hero p2 = Hero::parse("Dark_Wanderer.json");
     p1.fightTilDeath(p2);
     
     ASSERT_TRUE(p1.getHealthPoints() >= 0 and p2.getHealthPoints() >= 0);
 }
 
 TEST(HeroTest, isAdvancedHeroReallyLvlup){
-    Hero p1 = Hero::parse("../Dark_Wanderer.json");
-    Hero p2 = Hero::parse("../Dark_Wanderer.json");
+    Hero p1 = Hero::parse("Dark_Wanderer.json");
+    Hero p2 = Hero::parse("Dark_Wanderer.json");
     for(int i=1; i<3; i++){
         p1.fightTilDeath(p2);
     }
@@ -116,8 +118,8 @@ TEST(HeroTest, isAdvancedHeroReallyLvlup){
 }
 
 TEST(HeroTest, isAdvancedHeroReallyGetsXP){
-    Hero p1 = Hero::parse("../Dark_Wanderer.json");
-    Hero p2 = Hero::parse("../Dark_Wanderer.json");
+    Hero p1 = Hero::parse("Dark_Wanderer.json");
+    Hero p2 = Hero::parse("Dark_Wanderer.json");
     p1.fightTilDeath(p2);
     p2.fightTilDeath(p1);
     
@@ -125,8 +127,8 @@ TEST(HeroTest, isAdvancedHeroReallyGetsXP){
 }
 
 TEST(HeroTest, NoThrowCheck){
-    Hero p1 = Hero::parse("../Dark_Wanderer.json");
-    Hero p2 = Hero::parse("../Dark_Wanderer.json");
+    Hero p1 = Hero::parse("Dark_Wanderer.json");
+    Hero p2 = Hero::parse("Dark_Wanderer.json");
     
     EXPECT_NO_THROW(p1.fightTilDeath(p2));
 }
