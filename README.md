@@ -15,18 +15,18 @@ A csapattagok:
     
 A program egy `scenario` paramétert vár, ami tartalmazza a hős és a szörny(ek) paramétereit.<br><br>
 pelda_scenario.json<br><br>
-`
+``` 
 {
 "hero" : "hos_neve.json",
 "monsters" : " szorny1.json szorny2.json szorny3.json "
 }
-`
+``` 
 <br>
 Ezt beolvasva a program inicializálja a hős adatait és a szörny(ek) tulajdonságait.<br>
 
 ### Hős file
 A `hero` fájlnak az alábbiként kell kinézzen:<br><br>
-`
+``` 
 {
 "name" : "Hősnév",
 "base_health_points" : 30,
@@ -37,13 +37,13 @@ A `hero` fájlnak az alábbiként kell kinézzen:<br><br>
 "damage_bonus_per_level" : 1,
 "cooldown_multiplier_per_level": 0.9
 }
-`
+``` 
 <br>
 A `hero` képes szintet lépni, és XP-t gyűjteni. Ennek a vonzata, hogy megnő az életereje, a sebzése és az ütési sebessége szintenként. Ezek pontos paramétereit be lehet állítani az adott hős JSON fájljában.<br>
 
 ### Monster file
 A `monsters` fájl(ok)nak az alábbiként kell kinézzen: <br><br>
-`
+``` 
 {
 "lore" : "Rövid leírás a szörnyről.",
 "name" : "Monster",
@@ -52,7 +52,7 @@ A `monsters` fájl(ok)nak az alábbiként kell kinézzen: <br><br>
 "attack_cooldown" : 2.8,
 "race" : "undead"
 }
-`
+``` 
 <br>
 A `monsters` a  `hero`hoz képest nem képes a szintlépésre és az XP gyűjtésre, ezáltal nem tudja növelni a tulajdonságait.Egyszerűbb targetek a hősöknek.<br>
 
