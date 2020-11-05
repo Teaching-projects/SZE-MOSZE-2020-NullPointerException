@@ -59,10 +59,6 @@ TEST(ParserTest, parseFromFilenameAsJSONType){
     
 }
 
-TEST(ParserTest, JsonParserFailTest){
-    ASSERT_THROW(JSON::parseFromFile("test/wrong_json.json"), std::runtime_error);
-}
-
 TEST(ParserTest, NotExistingFileHandling){
     std::ifstream file("nonexists.json");
     ASSERT_THROW(JSON::parseFile(file), std::runtime_error);
