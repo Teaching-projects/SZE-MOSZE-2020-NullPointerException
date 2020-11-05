@@ -30,6 +30,7 @@ protected:
      *
      * \param He waits for a Hero type enemy
      */
+    void hit(Character &enemy);
     virtual void damaging(Character &enemy); ///< This method can take a damage to another Hero if his/her Health is not zero
     
 public:

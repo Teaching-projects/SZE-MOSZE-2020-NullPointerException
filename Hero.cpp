@@ -3,7 +3,6 @@
 #include <cmath>
 
 Hero::Hero(const std::string& name, int hp, int dmg, double as, int xpHatar, int hpBonus, int dmgBonus, double CDBonus) : Character(name, hp, dmg, as){
-    maxHp = hp;
     this->xpHatar = xpHatar;
     this->hpBonus = hpBonus;
     this->dmgBonus = dmgBonus;
@@ -22,14 +21,22 @@ Hero Hero::parse(const std::string& filename){
                             map.get<double>("cooldown_multiplier_per_level"));
 }
 
-void Hero::damaging(Hero &enemy){
+void Hero::damaging(Character &enemy){
+    this->gainXP(enemy);
+    
+}
+
+void Hero::gainXP(Character &enemy){
     xp += std::min(dmg, enemy.getHealthPoints());
+    this->hit(enemy);
     levelup(this->xp / xpHatar);
+    
 }
 
 void Hero::levelup(int levelcount){
     for(int i=0; i<levelcount; i++){
-        hp = maxHp += hpBonus;
+        maxHp += hpBonus;
+        hp=maxHp;
         dmg += dmgBonus;
         attackspeed *= CDBonus;
         lvl++;

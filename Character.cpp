@@ -1,5 +1,6 @@
 #include "Character.h"
 #include "JSON.h"
+#include <iostream>
 
 
 
@@ -22,22 +23,26 @@ int Character::getDamage() const{
 
 //Returns with boolean if the Character's HP is zero or lower.
 bool Character::isAlive(){
-    if(getHealthPoints()>=0){
+    if(hp>0){
         return true;
     }else{
         return false;
     }
 }
 
-//Taking damage to an enemy Character if the HP is not zero.
-void Character::damaging(Character &enemy){
-    if(hp > 0){
+void Character::hit(Character &enemy){
+    if(this->isAlive() && enemy.isAlive()){
         if((enemy.hp - dmg) > 0){
             enemy.hp -= dmg;
         }else{
             enemy.hp = 0;
         }
-    }   
+    }
+}
+
+//Taking damage to an enemy Character if the HP is not zero.
+void Character::damaging(Character &enemy){
+    this->hit(enemy);
 }
 
 //Automatized battle method, according to the attackspeed
@@ -47,12 +52,9 @@ void Character::fightTilDeath(Character &target){
     double tempw1 = 0;
     double tempw2 = 0;
     
-    this->damaging(target);
-    
-    while(hp > 0 && target.getHealthPoints() > 0){
+    while(this->isAlive() && target.isAlive()){
         w1 = this->getAttackCoolDown();
         w2 = target.getAttackCoolDown();
-        
         if(w1+tempw1 < w2+tempw2){
             tempw1 += w1;
             this->damaging(target);

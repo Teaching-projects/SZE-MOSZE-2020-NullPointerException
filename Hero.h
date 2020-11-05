@@ -25,7 +25,7 @@ private:
     int xpHatar; ///< This is the ammount of xp the hero has to collect to level up
     int hpBonus, dmgBonus;
     double CDBonus;
-    int maxHp; ///< This is the max health of the Hero, which increases with the level
+    int maxHp = hp; ///< This is the max health of the Hero, which increases with the level
     int xp = 0; ///< The xp starts at 0, and with each battle he collects xp
     int lvl = 1; ///< The hero starts at level 1, and according to the xp earned, he can level up to be more powerful
     Hero(const std::string& name, int hp, int dmg, double as,int xpHatar, int hpBonus, int dmgBonus, double CDBonus); ///< This is the contrustor. The constructor sets the parameters of the hero
@@ -35,6 +35,7 @@ private:
      * \param The hero's actual level
      */
     void levelup(int);
+    void gainXP(Character& enemy);
     
 public:
     int getLevel() const { return lvl; }; ///< Const getter of the hero's level
@@ -46,7 +47,7 @@ public:
      *
      * \param He waits for a Hero type enemy
      */
-    void damaging(Hero &enemy); ///< This method damages the enemy and increases the hero's xp
+    void damaging(Character &enemy) override; ///< This method damages the enemy and increases the hero's xp
     
 
     /**
