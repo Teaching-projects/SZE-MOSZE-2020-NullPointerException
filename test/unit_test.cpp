@@ -8,13 +8,13 @@
 
 //JSON TESTS
 TEST(ParserTest, FilenameInputTest){
-    std::map<std::string, std::string> expected;
-    std::map<std::string, std::string> jsontest;
+    std::map<std::string, std::any> expected;
+    std::map<std::string, std::any> jsontest;
     
-    expected.insert(std::pair<std::string, std::string>("name", "Monster"));
-    expected.insert(std::pair<std::string, std::string>("hp", "10000"));
-    expected.insert(std::pair<std::string, std::string>("dmg", "100"));
-    expected.insert(std::pair<std::string, std::string>("attackcooldown", "2"));
+    expected.insert(std::pair<std::string, std::any>>("name", "Monster"));
+    expected.insert(std::pair<std::string, std::any>>("hp", "10000"));
+    expected.insert(std::pair<std::string, std::any>>("dmg", "100"));
+    expected.insert(std::pair<std::string, std::any>>("attackcooldown", "2"));
     
     jsontest = JSON::parseFromFile("test/test_warrior.json");
     
@@ -23,13 +23,13 @@ TEST(ParserTest, FilenameInputTest){
 }
 
 TEST(ParserTest, FileInputTest){
-    std::map<std::string, std::string> expected;
-    std::map<std::string, std::string> jsontest;
+    std::map<std::string, std::any>> expected;
+    std::map<std::string, std::any>> jsontest;
     
-    expected.insert(std::pair<std::string, std::string>("name", "Monster"));
-    expected.insert(std::pair<std::string, std::string>("hp", "10000"));
-    expected.insert(std::pair<std::string, std::string>("dmg", "100"));
-    expected.insert(std::pair<std::string, std::string>("attackcooldown", "2"));
+    expected.insert(std::pair<std::string, std::any>>("name", "Monster"));
+    expected.insert(std::pair<std::string, std::any>>("hp", "10000"));
+    expected.insert(std::pair<std::string, std::any>>("dmg", "100"));
+    expected.insert(std::pair<std::string, std::any>>("attackcooldown", "2"));
     
     std::string filename("test/test_warrior.json");
     
@@ -42,16 +42,16 @@ TEST(ParserTest, FileInputTest){
 }
 
 TEST(ParserTest, StringInputTest){
-    std::map<std::string, std::string> expected;
+    std::map<std::string, std::any>> expected;
     std::string stringjson =
     "{\n\t\"name\"  :  \"Monster\",\n\t\"hp\":10000,\n\t\"dmg\":100,\n\t\"attackcooldown\":2, \n}";
     
-    expected.insert(std::pair<std::string, std::string>("name", "Monster"));
-    expected.insert(std::pair<std::string, std::string>("hp", "10000"));
-    expected.insert(std::pair<std::string, std::string>("dmg", "100"));
-    expected.insert(std::pair<std::string, std::string>("attackcooldown", "2"));
+    expected.insert(std::pair<std::string, std::any>>("name", "Monster"));
+    expected.insert(std::pair<std::string, std::any>>("hp", "10000"));
+    expected.insert(std::pair<std::string, std::any>>("dmg", "100"));
+    expected.insert(std::pair<std::string, std::any>>("attackcooldown", "2"));
     
-    std::map<std::string, std::string> jsontest = JSON::StringFinder(stringjson);
+    std::map<std::string, std::any>> jsontest = JSON::StringFinder(stringjson);
     
     ASSERT_EQ(expected, jsontest);
     
@@ -84,10 +84,6 @@ TEST(CharacterTest, BadParsingTest){
     ASSERT_THROW(Character::parseUnit("notexists.json"), std::runtime_error);
 }
 
-TEST(CharacterTest, NotExistingMapTest){
-    ASSERT_THROW(Character::parseUnit("wrong_json.json"), std::runtime_error);
-}
-
 TEST(CharacterTest, NoThrowCheck){
     Character p1 = Character::parseUnit("units/capt.json");
     Character p2 = Character::parseUnit("units/hulk.json");
@@ -98,16 +94,16 @@ TEST(CharacterTest, NoThrowCheck){
 //Hero TESTS
 
 TEST(HeroTest, isHpNotNegative){
-    Hero p1 = Hero::parse("units/capt.json");
-    Hero p2 = Hero::parse("units/hulk.json");
+    Hero p1 = Hero::parse("../Dark_Wanderer.json");
+    Hero p2 = Hero::parse("../Dark_Wanderer.json");
     p1.fightTilDeath(p2);
     
     ASSERT_TRUE(p1.getHealthPoints() >= 0 and p2.getHealthPoints() >= 0);
 }
 
 TEST(HeroTest, isAdvancedHeroReallyLvlup){
-    Hero p1 = Hero::parse("units/capt.json");
-    Hero p2 = Hero::parse("units/hulk.json");
+    Hero p1 = Hero::parse("../Dark_Wanderer.json");
+    Hero p2 = Hero::parse("../Dark_Wanderer.json");
     for(int i=1; i<3; i++){
         p1.fightTilDeath(p2);
     }
@@ -117,8 +113,8 @@ TEST(HeroTest, isAdvancedHeroReallyLvlup){
 }
 
 TEST(HeroTest, isAdvancedHeroReallyGetsXP){
-    Hero p1 = Hero::parse("units/capt.json");
-    Hero p2 = Hero::parse("units/hulk.json");
+    Hero p1 = Hero::parse("../Dark_Wanderer.json");
+    Hero p2 = Hero::parse("../Dark_Wanderer.json");
     p1.fightTilDeath(p2);
     p2.fightTilDeath(p1);
     
@@ -126,8 +122,8 @@ TEST(HeroTest, isAdvancedHeroReallyGetsXP){
 }
 
 TEST(HeroTest, NoThrowCheck){
-    Hero p1 = Hero::parse("units/capt.json");
-    Hero p2 = Hero::parse("units/hulk.json");
+    Hero p1 = Hero::parse("../Dark_Wanderer.json");
+    Hero p2 = Hero::parse("../Dark_Wanderer.json");
     
     EXPECT_NO_THROW(p1.fightTilDeath(p2));
 }
