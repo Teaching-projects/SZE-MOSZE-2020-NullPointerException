@@ -2,8 +2,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <any>
 
-std::map<std::string, std::string> JSON::parseFile(std::istream& istream){
+
+std::map<std::string, std::any> JSON::parseFile(std::istream& istream){
     std::string Data;
     if(istream.good()){
         std::string line = "";
@@ -16,9 +18,9 @@ std::map<std::string, std::string> JSON::parseFile(std::istream& istream){
     return JSON::StringFinder(Data);
 }
 
-std::map<std::string, std::string> JSON::parseFromFile(const std::string& Filename){
+std::map<std::string, std::any> JSON::parseFromFile(const std::string& Filename){
     std::ifstream jsonFile;
-    std::map<std::string, std::string> Map;
+    std::map<std::string, std::any> Map;
     jsonFile.open(Filename);
     if(jsonFile.is_open()){
         Map = JSON::parseFile(jsonFile);
@@ -30,57 +32,48 @@ std::map<std::string, std::string> JSON::parseFromFile(const std::string& Filena
     
 }
 
-const std::map<std::string, std::string> JSON::StringFinder(const std::string& Data){
-    std::map<std::string, std::string> Map;
-    std::string readline,name,hp,dmg,as  = "";
+const std::map<std::string, std::any> JSON::StringFinder(const std::string& Data){
+    std::map<std::string, std::any> Map;
+    std::string readline,name,hp,dmg,as, key, value  = "";
     bool ertek = false;
+    bool isStillKey = false;
+    int idezojel = 0;
+    int ertekidezo = 0;
+    bool isStringValue = false;
     
     for (unsigned int i = 0; i < Data.length(); i++) {
-        
         if(Data[i] == ':'){
             ertek = true;
-        }else if (Data[i] == ',' or Data[i] == '}'){
+        }else if ((Data[i] == ',' or Data[i] == '}') and isStringValue == false){
             ertek = false;
+            //std::cout << WhitespaceCleanerAndFormatChecker(key) << std::endl << WhitespaceCleanerAndFormatChecker(value) << std::endl;
+            Map.insert(std::pair<std::string, std::any>(WhitespaceCleanerAndFormatChecker(key),WhitespaceCleanerAndFormatChecker(value)));
+            key = "";
+            value = "";
+        }else if((Data[i] == '"') and ertek == true){
+            ertekidezo++;
+            isStringValue = true;
+            if(ertekidezo == 2){
+                isStringValue = false;
+                ertekidezo = 0;
+            }
         }
-        
-        if (isalnum(Data[i]) or ertek == true) {
-            if (readline == "name"){
-                if(Data[i] !=':' and Data[i] !='"'){
-                    name += Data[i];
-                }
+        if((Data[i] == '"' or isStillKey == true) and ertek == false){
+            isStillKey = true;
+            if(Data[i] == '"') idezojel++;
+            if(Data[i] != '"' and Data[i] != ','){
+                key += Data[i];
             }
-            else if (readline == "hp"){
-                if(Data[i] !=':' and Data[i] !='"'){
-                    hp += Data[i];
-                }
+            if(isStillKey == true and idezojel == 2){
+                isStillKey = false;
+                idezojel = 0;
             }
-            else if (readline == "dmg"){
-                if(Data[i] !=':' and Data[i] !='"'){
-                    dmg += Data[i];
-                }
-            }
-            else if (readline == "attackcooldown"){
-                if(Data[i] !=':' and Data[i] !='"'){
-                    as += Data[i];
-                }
-            }
-            else readline += Data[i];
         }
-        if(Data[i] == ','){
-            readline = "";
+        if(ertek == true and Data[i] !=':' and Data[i] !='"'){
+            value += Data[i];
         }
     }
-    
-    Map["name"] = WhitespaceCleanerAndFormatChecker(name);
-    Map["hp"] = WhitespaceCleanerAndFormatChecker(hp);
-    Map["dmg"] = WhitespaceCleanerAndFormatChecker(dmg);
-    Map["attackcooldown"] = WhitespaceCleanerAndFormatChecker(as);
-    
-    if(Map.find("name") != Map.end() && Map.find("hp") != Map.end() && Map.find("dmg") != Map.end() && Map.find("attackcooldown") != Map.end()){
-        return Map;
-    }else{
-        throw std::runtime_error("Bad mapping");
-    }
+    return Map;
 }
 
 std::string JSON::WhitespaceCleanerAndFormatChecker(std::string& string){

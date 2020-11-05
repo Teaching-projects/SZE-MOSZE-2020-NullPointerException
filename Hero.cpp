@@ -2,15 +2,22 @@
 #include <iostream>
 #include <cmath>
 
-
-int Hero::xpHatar = 100;
-
-Hero::Hero(const std::string& name, int hp, int dmg, double as) : Character(name, hp, dmg, as), maxHp(hp){
+Hero::Hero(const std::string& name, int maxHp, int dmg, double as, int xpHatar, int hpBonus, int dmgBonus, double CDBonus) : Character(name, maxHp, dmg, as){
+    this->xpHatar = xpHatar;
+    this->dmgBonus = dmgBonus;
+    this->CDBonus = CDBonus;
 }
 
 Hero Hero::parse(const std::string& filename){
-    Character Unit = Character::parseUnit(filename);
-    return Hero(Unit.getName(), Unit.getHealthPoints(), Unit.getDamage(), Unit.getAttackCoolDown());
+    JSON map = JSON::parseFromFile(filename);
+    return Hero(map.get<std::string>("name"),
+                            map.get<int>("base_health_points"),
+                            map.get<int>("base_damage"),
+                            map.get<double>("base_attack_cooldown"),
+                            map.get<int>("experience_per_level"),
+                            map.get<int>("health_point_bonus_per_level"),
+                            map.get<int>("damage_bonus_per_level"),
+                            map.get<double>("cooldown_multiplier_per_level"));
 }
 
 void Hero::damaging(Hero &enemy){
@@ -20,10 +27,9 @@ void Hero::damaging(Hero &enemy){
 
 void Hero::levelup(int levelcount){
     for(int i=0; i<levelcount; i++){
-        maxHp = (int)round((double)maxHp * 1.1);
-        dmg = (int)round((double)dmg * 1.1);
-        attackspeed = getAttackCoolDown()*0.9;
-        hp = maxHp;
+        hp = maxHp += hpBonus;
+        dmg += dmgBonus;
+        attackspeed *= CDBonus;
         lvl++;
         xp -= xpHatar;
     }

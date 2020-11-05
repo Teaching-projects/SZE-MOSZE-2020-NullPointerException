@@ -71,15 +71,4 @@ double Character::getAttackCoolDown() const{
     return attackspeed;
 }
 
-//Parsing an Unit from JSON file
-Character Character::parseUnit(const std::string& fileName){
-    std::map<std::string, std::string> Map;
-    Map = JSON::parseFromFile(fileName);
-    if(Map.find("name") != Map.end() && Map.find("hp") != Map.end() && Map.find("dmg") != Map.end() && Map.find("attackcooldown") != Map.end()){
-        return Character(Map["name"],stoi(Map["hp"]),stoi(Map["dmg"]), stod(Map["attackcooldown"]));
-    }else{
-        throw std::runtime_error("Bad mapping");
-    }
-    
-    
-}
+
