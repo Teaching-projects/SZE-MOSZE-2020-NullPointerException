@@ -22,12 +22,12 @@
 //This is the class of the Advanced Hero
 class Hero : public Character {
 private:
-    int maxHp; ///< This is the max health of the Hero, which increases with the level
-    int xp = 0; ///< The xp starts at 0, and with each battle he collects xp
     int xpHatar; ///< This is the ammount of xp the hero has to collect to level up
-    int lvl = 1; ///< The hero starts at level 1, and according to the xp earned, he can level up to be more powerful
     int hpBonus, dmgBonus;
     double CDBonus;
+    int maxHp; ///< This is the max health of the Hero, which increases with the level
+    int xp = 0; ///< The xp starts at 0, and with each battle he collects xp
+    int lvl = 1; ///< The hero starts at level 1, and according to the xp earned, he can level up to be more powerful
     Hero(const std::string& name, int hp, int dmg, double as,int xpHatar, int hpBonus, int dmgBonus, double CDBonus); ///< This is the contrustor. The constructor sets the parameters of the hero
     /**
      * \brief This method is used to increase the heros attributes when levelling up

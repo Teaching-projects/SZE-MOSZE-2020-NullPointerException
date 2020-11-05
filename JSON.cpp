@@ -3,7 +3,7 @@
 #include <fstream>
 #include <string>
 #include <any>
-
+#include <variant>
 
 std::map<std::string, std::any> JSON::parseFile(std::istream& istream){
     std::string Data;
@@ -34,7 +34,7 @@ std::map<std::string, std::any> JSON::parseFromFile(const std::string& Filename)
 
 const std::map<std::string, std::any> JSON::StringFinder(const std::string& Data){
     std::map<std::string, std::any> Map;
-    std::string readline,name,hp,dmg,as, key, value  = "";
+    std::string key, value  = "";
     bool ertek = false;
     bool isStillKey = false;
     int idezojel = 0;

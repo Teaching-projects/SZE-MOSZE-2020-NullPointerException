@@ -20,6 +20,7 @@
 #include <fstream>
 #include <streambuf>
 #include <unordered_set>
+#include <variant>
 
 //This is the class of the JsonParser
 class JSON{
@@ -39,7 +40,7 @@ private:
 public:
     
     //-- Ctor létrehozás
-    JSON(std::map<std::string, std::any> map) : map(map) {}
+    JSON(std::map<std::string, std::any> map_) : map(map_) {}
     
     /**
      * \brief This method is used to find the hero's attributes. It looks for the hero's name, health, damage and attackcooldown and maps them together.
@@ -70,7 +71,19 @@ public:
     
     //getMap
     template <typename T>
-    T get(const std::string &key) { return std::any_cast<T>(map[key]); }
+    T get(const std::string& key){
+        std::string value =  std::any_cast<std::string>(map[key]);
+        std::any converted;
+        if (std::is_same<T, int>::value){
+            converted=(std::stoi(value));
+        }else if(std::is_same<T, double>::value){
+            converted=(std::stod(value));
+        }else if(std::is_same<T, std::string>::value){
+            converted=value;
+        }
+        
+        return std::any_cast<T>(converted);
+    }
 };
 
 #endif /* JSON_h */

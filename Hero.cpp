@@ -2,8 +2,10 @@
 #include <iostream>
 #include <cmath>
 
-Hero::Hero(const std::string& name, int maxHp, int dmg, double as, int xpHatar, int hpBonus, int dmgBonus, double CDBonus) : Character(name, maxHp, dmg, as){
+Hero::Hero(const std::string& name, int hp, int dmg, double as, int xpHatar, int hpBonus, int dmgBonus, double CDBonus) : Character(name, hp, dmg, as){
+    maxHp = hp;
     this->xpHatar = xpHatar;
+    this->hpBonus = hpBonus;
     this->dmgBonus = dmgBonus;
     this->CDBonus = CDBonus;
 }
