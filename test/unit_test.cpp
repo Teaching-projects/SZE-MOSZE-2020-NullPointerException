@@ -53,10 +53,10 @@ TEST(ParserTest, parseFromFilenameAsJSONType){
     
     JSON jsontest = JSON::parseFromFile("test/test_warrior.json");
     
-    ASSERT_EQ(std::any_cast<std::string>(jsontest["name"]), "Monster");
-    ASSERT_EQ(std::any_cast<int>(jsontest["health_points"]), 10000);
-    ASSERT_EQ(std::any_cast<int>(jsontest["damage"]), 100);
-    ASSERT_EQ(std::any_cast<double>(jsontest["attack_cooldown"]), 2);
+    ASSERT_EQ(jsontest.get<std::string>("name"), "Monster");
+    ASSERT_EQ(jsontest.get<int>("health_points"), 10000);
+    ASSERT_EQ(jsontest.get<int>("damage"), 100);
+    ASSERT_EQ(jsontest.get<double>("attack_cooldown"), 2);
     
 }
 
