@@ -1,7 +1,7 @@
 OBJS := JSON.o Character.o Hero.o main.o
 CC := g++-10
 PNAME := a.out
-TESTUNITS := units/ironman.json units/hulk.json
+TESTUNITS := scenario1.json
 PUNITS := ./a.out $(TESTUNITS)
 
 CFLAGS := -std=c++17 -Wall -Werror -lstdc++fs
