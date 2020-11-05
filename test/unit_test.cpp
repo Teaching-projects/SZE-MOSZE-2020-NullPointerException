@@ -1,6 +1,7 @@
 #include <string>
 #include <map>
 #include <fstream>
+#include <any>
 #include <gtest/gtest.h>
 #include "../JSON.h"
 #include "../Character.h"
@@ -8,28 +9,19 @@
 
 //JSON TESTS
 TEST(ParserTest, FilenameInputTest){
-    std::map<std::string, std::any> expected;
     std::map<std::string, std::any> jsontest;
-    
-    expected.insert(std::pair<std::string, std::any>>("name", "Monster"));
-    expected.insert(std::pair<std::string, std::any>>("hp", "10000"));
-    expected.insert(std::pair<std::string, std::any>>("dmg", "100"));
-    expected.insert(std::pair<std::string, std::any>>("attackcooldown", "2"));
     
     jsontest = JSON::parseFromFile("test/test_warrior.json");
     
-    ASSERT_EQ(expected, jsontest);
+    ASSERT_EQ(std::any_cast<std::string>(jsontest["name"]), "Monster");
+    ASSERT_EQ(std::any_cast<int>(jsontest["hp"]), 10000);
+    ASSERT_EQ(std::any_cast<int>(jsontest["dmg"]), 100);
+    ASSERT_EQ(std::any_cast<double>(jsontest["attackspeed"]), 2);
     
 }
 
 TEST(ParserTest, FileInputTest){
-    std::map<std::string, std::any>> expected;
     std::map<std::string, std::any>> jsontest;
-    
-    expected.insert(std::pair<std::string, std::any>>("name", "Monster"));
-    expected.insert(std::pair<std::string, std::any>>("hp", "10000"));
-    expected.insert(std::pair<std::string, std::any>>("dmg", "100"));
-    expected.insert(std::pair<std::string, std::any>>("attackcooldown", "2"));
     
     std::string filename("test/test_warrior.json");
     
@@ -37,23 +29,34 @@ TEST(ParserTest, FileInputTest){
     
     jsontest = JSON::parseFile(fileinput);
     
-    ASSERT_EQ(expected, jsontest);
+    ASSERT_EQ(std::any_cast<std::string>(jsontest["name"]), "Monster");
+    ASSERT_EQ(std::any_cast<int>(jsontest["hp"]), 10000);
+    ASSERT_EQ(std::any_cast<int>(jsontest["dmg"]), 100);
+    ASSERT_EQ(std::any_cast<double>(jsontest["attackspeed"]), 2);
     
 }
 
 TEST(ParserTest, StringInputTest){
-    std::map<std::string, std::any>> expected;
     std::string stringjson =
     "{\n\t\"name\"  :  \"Monster\",\n\t\"hp\":10000,\n\t\"dmg\":100,\n\t\"attackcooldown\":2, \n}";
     
-    expected.insert(std::pair<std::string, std::any>>("name", "Monster"));
-    expected.insert(std::pair<std::string, std::any>>("hp", "10000"));
-    expected.insert(std::pair<std::string, std::any>>("dmg", "100"));
-    expected.insert(std::pair<std::string, std::any>>("attackcooldown", "2"));
-    
     std::map<std::string, std::any>> jsontest = JSON::StringFinder(stringjson);
     
-    ASSERT_EQ(expected, jsontest);
+    ASSERT_EQ(std::any_cast<std::string>(jsontest["name"]), "Monster");
+    ASSERT_EQ(std::any_cast<int>(jsontest["hp"]), 10000);
+    ASSERT_EQ(std::any_cast<int>(jsontest["dmg"]), 100);
+    ASSERT_EQ(std::any_cast<double>(jsontest["attackspeed"]), 2);
+    
+}
+
+TEST(ParserTest, parseFromFilenameAsJSONType){
+    
+    JSON jsontest = JSON::parseFromFile("test/test_warrior.json");
+    
+    ASSERT_EQ(std::any_cast<std::string>(jsontest["name"]), "Monster");
+    ASSERT_EQ(std::any_cast<int>(jsontest["hp"]), 10000);
+    ASSERT_EQ(std::any_cast<int>(jsontest["dmg"]), 100);
+    ASSERT_EQ(std::any_cast<double>(jsontest["attackspeed"]), 2);
     
 }
 
