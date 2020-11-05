@@ -1,6 +1,6 @@
 {
     "name" : "Hulk",
-    "hp" : 500,
-    "dmg" : 30,
-    "attackcooldown" : 2
+    "health_points" : 500,
+    "damage" : 30,
+    "attack_cooldown" : 2
 }

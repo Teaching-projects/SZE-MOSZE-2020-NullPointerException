@@ -11,19 +11,19 @@
 
 //JSON TESTS
 TEST(ParserTest, FilenameInputTest){
-    std::map<std::string, std::any> jsontest;
+    JSON jsontest;
     
     jsontest = JSON::parseFromFile("test/test_warrior.json");
     
-    ASSERT_EQ(std::any_cast<std::string>(jsontest["name"]), "Monster");
-    ASSERT_EQ(std::any_cast<int>(jsontest["health_points"]), 10000);
-    ASSERT_EQ(std::any_cast<int>(jsontest["damage"]), 100);
-    ASSERT_EQ(std::any_cast<double>(jsontest["attack_cooldown"]), 2);
+    ASSERT_EQ(jsontest.get<std::string>("name"), "Monster");
+    ASSERT_EQ(jsontest.get<int>("health_points"), 10000);
+    ASSERT_EQ(jsontest.get<int>("damage"), 100);
+    ASSERT_EQ(jsontest.get<double>("attack_cooldown"), 2);
     
 }
 
 TEST(ParserTest, FileInputTest){
-    std::map<std::string, std::any> jsontest;
+    JSON jsontest;
     
     std::string filename("test/test_warrior.json");
     
@@ -31,23 +31,22 @@ TEST(ParserTest, FileInputTest){
     
     jsontest = JSON::parseFile(fileinput);
     
-    ASSERT_EQ(std::any_cast<std::string>(jsontest["name"]), "Monster");
-    ASSERT_EQ(std::any_cast<int>(jsontest["health_points"]), 10000);
-    ASSERT_EQ(std::any_cast<int>(jsontest["damage"]), 100);
-    ASSERT_EQ(std::any_cast<double>(jsontest["attack_cooldown"]), 2);
-    
+    ASSERT_EQ(jsontest.get<std::string>("name"), "Monster");
+    ASSERT_EQ(jsontest.get<int>("health_points"), 10000);
+    ASSERT_EQ(jsontest.get<int>("damage"), 100);
+    ASSERT_EQ(jsontest.get<double>("attack_cooldown"), 2);
 }
 
 TEST(ParserTest, StringInputTest){
     std::string stringjson =
     "{\n\t\"name\"  :  \"Monster\",\n\t\"hp\":10000,\n\t\"dmg\":100,\n\t\"attackcooldown\":2, \n}";
     
-    std::map<std::string, std::any> jsontest = JSON::StringFinder(stringjson);
+    JSON jsontest = JSON::StringFinder(stringjson);
     
-    ASSERT_EQ(std::any_cast<std::string>(jsontest["name"]), "Monster");
-    ASSERT_EQ(std::any_cast<int>(jsontest["health_points"]), 10000);
-    ASSERT_EQ(std::any_cast<int>(jsontest["damage"]), 100);
-    ASSERT_EQ(std::any_cast<double>(jsontest["attack_cooldown"]), 2);
+    ASSERT_EQ(jsontest.get<std::string>("name"), "Monster");
+    ASSERT_EQ(jsontest.get<int>("health_points"), 10000);
+    ASSERT_EQ(jsontest.get<int>("damage"), 100);
+    ASSERT_EQ(jsontest.get<double>("attack_cooldown"), 2);
     
 }
 
