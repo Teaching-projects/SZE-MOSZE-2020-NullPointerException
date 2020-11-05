@@ -14,7 +14,7 @@ A csapattagok:
 ### Scenario file
     
 A program egy `scenario` paramétert vár, ami tartalmazza a hős és a szörny(ek) paramétereit.<br><br>
-pelda_scenario.json<br><br>
+`pelda_scenario.json`<br><br>
 ``` 
 {
 "hero" : "hos_neve.json",
@@ -26,6 +26,7 @@ Ezt beolvasva a program inicializálja a hős adatait és a szörny(ek) tulajdon
 
 ### Hős file
 A `hero` fájlnak az alábbiként kell kinézzen:<br><br>
+`hos_neve.json`
 ``` 
 {
 "name" : "Hősnév",
@@ -43,6 +44,7 @@ A `hero` képes szintet lépni, és XP-t gyűjteni. Ennek a vonzata, hogy megnő
 
 ### Monster file
 A `monsters` fájl(ok)nak az alábbiként kell kinézzen: <br><br>
+`szorny1.json`<br><br>
 ``` 
 {
 "lore" : "Rövid leírás a szörnyről.",
@@ -54,7 +56,7 @@ A `monsters` fájl(ok)nak az alábbiként kell kinézzen: <br><br>
 }
 ``` 
 <br>
-A `monsters` a  `hero`hoz képest nem képes a szintlépésre és az XP gyűjtésre, ezáltal nem tudja növelni a tulajdonságait.Egyszerűbb targetek a hősöknek.<br>
+A `monsters` a `hero` hoz képest nem képes a szintlépésre és az XP gyűjtésre, ezáltal nem tudja növelni a tulajdonságait.Egyszerűbb targetek a hősöknek.<br>
 
 ------------
 
