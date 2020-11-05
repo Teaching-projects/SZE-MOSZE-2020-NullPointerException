@@ -22,6 +22,6 @@ jobs:
       - name: Cppchecks
         run: make sca_warning
       - name: Gplusplus Wall
-        run: g++-10 -Wall -Werror *.cpp -lstdc++fs -g
+        run: g++-10 -std=c++17 -Wall -Werror *.cpp -lstdc++fs -g
       - name: Valgrind
         run: make memtest
