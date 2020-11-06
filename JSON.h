@@ -20,6 +20,7 @@
 #include <fstream>
 #include <streambuf>
 #include <unordered_set>
+#include <variant>
 
 //This is the class of the JsonParser
 class JSON{
@@ -82,8 +83,8 @@ public:
      */
     template <typename T>
     T get(const std::string& key){
-        std::string value =  std::any_cast<std::string>(map[key]);
-        std::any converted;
+        std::string value = std::any_cast<std::string>(map[key]);
+        std::variant<int, double, std::string> converted;
         if (std::is_same<T, int>::value){
             converted=(std::stoi(value));
         }else if(std::is_same<T, double>::value){
@@ -92,7 +93,7 @@ public:
             converted=value;
         }
         
-        return std::any_cast<T>(converted);
+        return std::get<T>(converted);
     }
 };
 
