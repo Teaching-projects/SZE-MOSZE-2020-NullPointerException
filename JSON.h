@@ -81,7 +81,7 @@ public:
      *
      * \return Returns with the converted type value.
      */
-    /*template <typename T>
+    template <typename T>
     T get(const std::string& key){
         std::string value = std::any_cast<std::string>(map[key]);
         std::variant<int, double, std::string> converted;
@@ -94,10 +94,6 @@ public:
         }
         
         return std::get<T>(converted);
-    }*/
-    template <typename T>
-    T get(const std::string& key){
-        return std::any_cast<T>(map[key]);
     }
 };
 
