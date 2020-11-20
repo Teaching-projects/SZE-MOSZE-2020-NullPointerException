@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['name',['name',['../classHero.html#abf1f2203c2cd11e1daf8b2abd82369cd',1,'Hero']]]
+  ['json',['JSON',['../classJSON.html',1,'JSON'],['../classJSON.html#a8e23d30387bcbad48722f870e22dc082',1,'JSON::JSON()']]],
+  ['jsonparser',['JsonParser',['../classJsonParser.html',1,'']]]
 ];

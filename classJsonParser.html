@@ -60,9 +60,6 @@ $(function() {
 
 </div><!-- top -->
 <div class="header">
-  <div class="summary">
-<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="classJsonParser-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">JsonParser Class Reference</div>  </div>
 </div><!--header-->
@@ -71,117 +68,15 @@ $(function() {
 <p><a class="el" href="classJsonParser.html" title="JsonParser class. ">JsonParser</a> class.  
  <a href="classJsonParser.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="JsonParser_8h_source.html">JsonParser.h</a>&gt;</code></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
-Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a2de060e911682fb27fe89d69ecae980c"><td class="memItemLeft" align="right" valign="top">static const std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJsonParser.html#a2de060e911682fb27fe89d69ecae980c">StringFinder</a> (const std::string &amp;)</td></tr>
-<tr class="memdesc:a2de060e911682fb27fe89d69ecae980c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is used to find the hero's attributes. It looks for the hero's name, health, damage and attackcooldown and maps them together.  <a href="#a2de060e911682fb27fe89d69ecae980c">More...</a><br /></td></tr>
-<tr class="separator:a2de060e911682fb27fe89d69ecae980c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a57ae294c3cf6e09f70936416f9b84a"><td class="memItemLeft" align="right" valign="top">static std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJsonParser.html#a1a57ae294c3cf6e09f70936416f9b84a">parser</a> (const std::string &amp;)</td></tr>
-<tr class="memdesc:a1a57ae294c3cf6e09f70936416f9b84a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is responsible to open the json files.  <a href="#a1a57ae294c3cf6e09f70936416f9b84a">More...</a><br /></td></tr>
-<tr class="separator:a1a57ae294c3cf6e09f70936416f9b84a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa16485fdf6c1d6b31ab91e873ec5d54d"><td class="memItemLeft" align="right" valign="top">static std::map&lt; std::string, std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJsonParser.html#aa16485fdf6c1d6b31ab91e873ec5d54d">parseFile</a> (std::istream &amp;)</td></tr>
-<tr class="memdesc:aa16485fdf6c1d6b31ab91e873ec5d54d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This method is used to read in the json files data.  <a href="#aa16485fdf6c1d6b31ab91e873ec5d54d">More...</a><br /></td></tr>
-<tr class="separator:aa16485fdf6c1d6b31ab91e873ec5d54d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
+<p><code>#include &lt;<a class="el" href="JSON_8h_source.html">JSON.h</a>&gt;</code></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classJsonParser.html" title="JsonParser class. ">JsonParser</a> class. </p>
 <p>This class declares the <a class="el" href="classJsonParser.html" title="JsonParser class. ">JsonParser</a> object, which is used to correctly read the heroes attributes.</p>
 <dl class="section author"><dt>Author</dt><dd>NullPointerException</dd></dl>
-<dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>2.0</dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2020/11/01 11:00 </dd></dl>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa16485fdf6c1d6b31ab91e873ec5d54d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa16485fdf6c1d6b31ab91e873ec5d54d">&#9670;&nbsp;</a></span>parseFile()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::map&lt; std::string, std::string &gt; JsonParser::parseFile </td>
-          <td>(</td>
-          <td class="paramtype">std::istream &amp;&#160;</td>
-          <td class="paramname"><em>istream</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>This method is used to read in the json files data. </p>
-<dl class="section return"><dt>Returns</dt><dd>Returns with the data of the json file. </dd></dl>
-
-</div>
-</div>
-<a id="a1a57ae294c3cf6e09f70936416f9b84a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1a57ae294c3cf6e09f70936416f9b84a">&#9670;&nbsp;</a></span>parser()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::map&lt; std::string, std::string &gt; JsonParser::parser </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>Filename</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>This method is responsible to open the json files. </p>
-<dl class="section return"><dt>Returns</dt><dd>Returns a Map if the json file exist. If there's a problem, we get a "not exist" runtime error. </dd></dl>
-
-</div>
-</div>
-<a id="a2de060e911682fb27fe89d69ecae980c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2de060e911682fb27fe89d69ecae980c">&#9670;&nbsp;</a></span>StringFinder()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const std::map&lt; std::string, std::string &gt; JsonParser::StringFinder </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>Data</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>This method is used to find the hero's attributes. It looks for the hero's name, health, damage and attackcooldown and maps them together. </p>
-<dl class="section return"><dt>Returns</dt><dd>Returns the correct Map file of a hero if everythings good. If there's a problem we get a "Bad mapping" runtime error. </dd></dl>
-
-</div>
-</div>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="JsonParser_8h_source.html">JsonParser.h</a></li>
-<li>JsonParser.cpp</li>
+</div><hr/>The documentation for this class was generated from the following file:<ul>
+<li><a class="el" href="JSON_8h_source.html">JSON.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

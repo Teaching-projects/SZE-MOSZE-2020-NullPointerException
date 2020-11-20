@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['advancedbattle',['advancedBattle',['../classAdvancedHero.html#a8f8569b797374e30095dbcdb45d93f6b',1,'AdvancedHero']]],
-  ['advanceddamage',['advancedDamage',['../classAdvancedHero.html#a39a418550e89529f3a55465c90ad1355',1,'AdvancedHero']]],
-  ['advancedhero',['AdvancedHero',['../classAdvancedHero.html#ab7d864b02cfdf5457b817e3f20b359c7',1,'AdvancedHero']]]
+  ['character',['Character',['../classCharacter.html#ad65233069f4a7fc367ad4b80040178f1',1,'Character']]],
+  ['count',['count',['../classJSON.html#ad1d99efbecae477e788d25e50bf9ba1f',1,'JSON']]]
 ];

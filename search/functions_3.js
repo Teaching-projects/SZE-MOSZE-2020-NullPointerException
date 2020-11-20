@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['getattackcooldown',['getAttackCooldown',['../classHero.html#ac10c378c0951f28ffefd4d54c08a4f2e',1,'Hero']]],
-  ['getdmg',['getDmg',['../classHero.html#a60e7b5be59457128423fee62b254721f',1,'Hero']]],
-  ['gethp',['getHP',['../classHero.html#acb8f0cd73372759f221aaa30b65c098d',1,'Hero']]],
-  ['getname',['getName',['../classHero.html#a972b20eae12fd58c09b6e84deb434b57',1,'Hero']]],
-  ['getxp',['getxp',['../classAdvancedHero.html#a255247f6fdb7bbdbb80bce28010422da',1,'AdvancedHero']]]
+  ['get',['get',['../classJSON.html#aebfe4eae3134bdc249f9695c6406bdba',1,'JSON']]],
+  ['getattackcooldown',['getAttackCoolDown',['../classCharacter.html#a44d2b7c4acb13bc0ee070b951a595ab3',1,'Character']]],
+  ['getdamage',['getDamage',['../classCharacter.html#a4b5771117324e7bcf7afd005b2aa5943',1,'Character']]],
+  ['gethealthpoints',['getHealthPoints',['../classCharacter.html#a11c7a043e31cad72a2dd090b8daac6d2',1,'Character']]],
+  ['getmaxhealthpoints',['getMaxHealthPoints',['../classHero.html#ac6a7deeb6e390a23536d622042f4c48e',1,'Hero']]],
+  ['getname',['getName',['../classCharacter.html#a631dd8d1785ff701f0fc51615bb017b2',1,'Character']]],
+  ['getxp',['getxp',['../classHero.html#a17c1e869864ddf8cb09a12148bc4cb0d',1,'Hero']]]
 ];
