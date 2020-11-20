@@ -1,6 +1,6 @@
 {
     "name" : "Iron Man",
-    "hp" : 100,
-    "dmg" : 10,
-    "attackcooldown" : 2.9
+    "health_points" : 100,
+    "damage" : 10,
+    "attack_cooldown" : 2.9
 }

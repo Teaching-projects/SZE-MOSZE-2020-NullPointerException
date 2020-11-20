@@ -3,66 +3,71 @@
  *
  * \brief Hero class
  *
- * This class declares the Hero object, which has four parameters at the moment. The Hero has many functions and datas, including his/her healthpoint, damage, name, attackspeed. He can take a damage, or set to an automatized Battle with his/her target according to the attackspeed. The Hero class can also read from a JSON file.
+ * This class declares the Hero object, which has the paramters of the basic Hero object. Added to that he has 2 new features added, heroxp and levels.
  *
  * \author NullPointerException
  *
- * \version 1.0
+ * \version 2.0
  *
- * \date 2020/10/15 15:00
+ * \date 2020/10/31 17:00
  *
  */
 
+#include "Character.h"
+#include "Monster.h"
+
 #ifndef Hero_h
 #define Hero_h
-#include <string>
 
-//This is the class of the Heroes
-class Hero{
-protected:
-    const std::string name; ///< This is the name of the Hero
-    int hp; ///< The health of the Hero, always changing during the fight
-    int dmg; ///< The amount of damage he can hits with
-    double attackspeed; ///< This is the attackspeed of the Hero
-
+//This is the class of the Advanced Hero
+class Hero : public Character {
+private:
+    int xpHatar; ///< This is the ammount of xp the hero has to collect to level up
+    int hpBonus, dmgBonus;///< This gets from the JSON files. These describes the Hero's healthpoint and damage bonuses when he level up
+    double CDBonus; ///< This is an AttackCooldown bonus when he level up.
+    int maxHp = hp; ///< This is the max health of the Hero, which increases with the level
+    int xp = 0; ///< The xp starts at 0, and with each battle he collects xp
+    int lvl = 1; ///< The hero starts at level 1, and according to the xp earned, he can level up to be more powerful
+    Hero(const std::string& name, int hp, int dmg, double as,int xpHatar, int hpBonus, int dmgBonus, double CDBonus); ///< This is the contrustor. The constructor sets the parameters of the hero
+    /**
+     * \brief This method is used to increase the heros attributes when levelling up
+     *
+     * \param The hero's actual level
+     */
+    void levelup(int);
+    
+    /**
+     * \brief This method gains the XP when he take a hit
+     *
+     * \param a Character type enemy
+     */
+    void gainXP(Character& enemy);
+    
+public:
+    int getLevel() const { return lvl; }; ///< Const getter of the hero's level
+    int getxp() const { return xp; };///< Const getter of the hero's xp
+    int getMaxHealthPoints() const { return maxHp; }
+    
     /**
      * \brief Taking damage to a target Hero
      *
      * \param He waits for a Hero type enemy
      */
-    void damaging(Hero *enemy); ///< This method can take a damage to another Hero if his/her Health is not zero
+    void damaging(Character &enemy) override; ///< This method damages the enemy and increases the hero's xp
     
-public:
-    Hero(const std::string&, int, const int, const double); ///< This is the constructor. The constructor sets the parameters of the Hero
 
-    const std::string& getName() const; ///< Const getter of the Hero's name
-    int getHP() const; ///< Const getter of the Hero's health
-    int getDmg() const; ///< Const getter of the Hero's damage
-    double getAttackCooldown() const; ///< Const getter of the Hero's attackspeed
-    
-    /**
-     * \brief This checks if the unit is dead or not
-     *
-     * \return If unit health point is zero or lower. If lower than zero, it sets to default zero. (returns with true or false)
-     */
-    bool isDead();
-    
-    /**
-     * \brief This is an automatized Battle method. It takes damages to the target (with the damaging method) depending on the Hero's attackspeed.
-     *
-     * \param Target hero
-     */
-    void Battle(Hero*);
-    
     /**
      * \brief Unit parsing from a JSON file.
      *
      * \param The string of the filename
      *
-     * \return Returns with a Hero type, with Hero parameters.
+     * \return Returns with an Hero type, with Hero parameters.
      */
-    static Hero parseUnit(const std::string& fileName);
+    static Hero parse(const std::string&);
+    
+    std::string status() const; ///< Writes out the current status of the game
     
 };
+
 
 #endif /* Hero_h */

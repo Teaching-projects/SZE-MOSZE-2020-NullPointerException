@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: g++ -std=c++17 *.cpp
+      - run: g++-10 -std=c++17 *.cpp -lstdc++fs
       - run: make io_diff_check
       - name: Install tools
         run: sudo apt-get install -y valgrind cppcheck
@@ -22,6 +22,6 @@ jobs:
       - name: Cppchecks
         run: make sca_warning
       - name: Gplusplus Wall
-        run: g++ -Wall -Werror *.cpp
+        run: g++-10 -std=c++17 -Wall -Werror *.cpp -lstdc++fs -g
       - name: Valgrind
         run: make memtest

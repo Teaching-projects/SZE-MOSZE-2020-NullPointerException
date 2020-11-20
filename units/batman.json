@@ -1,0 +1,12 @@
+{
+    "name" : "Batman",
+    "base_health_points" : 150,
+    "base_damage" : 15,
+    "base_attack_cooldown" : 1.0,
+    "experience_per_level" : 20,
+    "health_point_bonus_per_level" : 10,
+    "damage_bonus_per_level" : 5,
+    "cooldown_multiplier_per_level": 0.9
+}
+
+

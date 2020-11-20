@@ -1,0 +1,10 @@
+{
+    "name" : "Wonder Woman",
+    "base_health_points" : 100,
+    "base_damage" : 20,
+    "base_attack_cooldown" : 1.2,
+    "experience_per_level" : 30,
+    "health_point_bonus_per_level" : 20,
+    "damage_bonus_per_level" : 15,
+    "cooldown_multiplier_per_level": 0.7
+}

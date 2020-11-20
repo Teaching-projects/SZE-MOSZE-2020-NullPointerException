@@ -1,135 +1,129 @@
 #include <string>
 #include <map>
 #include <fstream>
+#include <any>
+#include <stdio.h>
+#include <stdlib.h>
 #include <gtest/gtest.h>
-#include "../JsonParser.h"
+#include "../JSON.h"
+#include "../Character.h"
 #include "../Hero.h"
-#include "../AdvancedHero.h"
 
-//JSONPARSER TESTS
+//JSON TESTS
 TEST(ParserTest, FilenameInputTest){
-    std::map<std::string, std::string> expected;
-    std::map<std::string, std::string> jsontest;
     
-    expected.insert(std::pair<std::string, std::string>("name", "Monster"));
-    expected.insert(std::pair<std::string, std::string>("hp", "10000"));
-    expected.insert(std::pair<std::string, std::string>("dmg", "100"));
-    expected.insert(std::pair<std::string, std::string>("attackcooldown", "2"));
+    JSON jsontest = JSON::parseFromFile("test/test_warrior.json");
     
-    jsontest = JsonParser::parser("test/test_warrior.json");
-    
-    ASSERT_EQ(expected, jsontest);
+    ASSERT_EQ(jsontest.get<std::string>("name"), "Monster");
+    ASSERT_EQ(jsontest.get<int>("health_points"), 10000);
+    ASSERT_EQ(jsontest.get<int>("damage"), 100);
+    ASSERT_EQ(jsontest.get<double>("attack_cooldown"), 2);
     
 }
 
 TEST(ParserTest, FileInputTest){
-    std::map<std::string, std::string> expected;
-    std::map<std::string, std::string> jsontest;
-    
-    expected.insert(std::pair<std::string, std::string>("name", "Monster"));
-    expected.insert(std::pair<std::string, std::string>("hp", "10000"));
-    expected.insert(std::pair<std::string, std::string>("dmg", "100"));
-    expected.insert(std::pair<std::string, std::string>("attackcooldown", "2"));
     
     std::string filename("test/test_warrior.json");
     
     std::ifstream fileinput(filename);
     
-    jsontest = JsonParser::parseFile(fileinput);
+    JSON jsontest = JSON::parseFile(fileinput);
     
-    ASSERT_EQ(expected, jsontest);
-    
+    ASSERT_EQ(jsontest.get<std::string>("name"), "Monster");
+    ASSERT_EQ(jsontest.get<int>("health_points"), 10000);
+    ASSERT_EQ(jsontest.get<int>("damage"), 100);
+    ASSERT_EQ(jsontest.get<double>("attack_cooldown"), 2);
 }
 
 TEST(ParserTest, StringInputTest){
-    std::map<std::string, std::string> expected;
     std::string stringjson =
-    "{\n\t\"name\"  :  \"Monster\",\n\t\"hp\":10000,\n\t\"dmg\":100,\n\t\"attackcooldown\":2, \n}";
+    "{\n\t\"name\"  :  \"Monster\",\n\t\"health_points\":10000,\n\t\"damage\":100,\n\t\"attack_cooldown\":2 \n}";
     
-    expected.insert(std::pair<std::string, std::string>("name", "Monster"));
-    expected.insert(std::pair<std::string, std::string>("hp", "10000"));
-    expected.insert(std::pair<std::string, std::string>("dmg", "100"));
-    expected.insert(std::pair<std::string, std::string>("attackcooldown", "2"));
+    JSON jsontest = JSON::StringFinder(stringjson);
     
-    std::map<std::string, std::string> jsontest = JsonParser::StringFinder(stringjson);
-    
-    ASSERT_EQ(expected, jsontest);
+    ASSERT_EQ(jsontest.get<std::string>("name"), "Monster");
+    ASSERT_EQ(jsontest.get<int>("health_points"), 10000);
+    ASSERT_EQ(jsontest.get<int>("damage"), 100);
+    ASSERT_EQ(jsontest.get<double>("attack_cooldown"), 2);
     
 }
 
-TEST(ParserTest, JsonParserFailTest){
-    ASSERT_THROW(JsonParser::parser("test/wrong_json.json"), std::runtime_error);
+TEST(ParserTest, parseFromFilenameAsJSONType){
+    
+    JSON jsontest = JSON::parseFromFile("test/test_warrior.json");
+    
+    ASSERT_EQ(jsontest.get<std::string>("name"), "Monster");
+    ASSERT_EQ(jsontest.get<int>("health_points"), 10000);
+    ASSERT_EQ(jsontest.get<int>("damage"), 100);
+    ASSERT_EQ(jsontest.get<double>("attack_cooldown"), 2);
+    
 }
 
 TEST(ParserTest, NotExistingFileHandling){
     std::ifstream file("nonexists.json");
-    ASSERT_THROW(JsonParser::parseFile(file), std::runtime_error);
+    ASSERT_THROW(JSON::parseFile(file), std::runtime_error);
 }
 
 TEST(ParserTest, NotExistingFileNameHandling){
-    ASSERT_THROW(JsonParser::parser("notexists.json"), std::runtime_error);
+    ASSERT_THROW(JSON::parseFromFile("notexists.json"), std::runtime_error);
 }
 
 
-//HERO TESTS
-TEST(HeroTest, isDeadTest){
-    Hero* p1 = new Hero(Hero::parseUnit("units/capt.json"));
-    Hero* p2 = new Hero(Hero::parseUnit("units/hulk.json"));
-    p1->Battle(p2);
+//Character TESTS
+TEST(CharacterTest, isDeadTest){
+    Character p1 = Character::parseUnit("units/capt.json");
+    Character p2 = Character::parseUnit("units/hulk.json");
+    p1.fightTilDeath(p2);
     
-    ASSERT_TRUE(p1->getHP() <= 0 || p2->getHP() <= 0);
+    ASSERT_TRUE(p1.getHealthPoints() <= 0 || p2.getHealthPoints() <= 0);
 }
 
-TEST(HeroTest, BadParsingTest){
-    ASSERT_THROW(Hero::parseUnit("notexists.json"), std::runtime_error);
+TEST(CharacterTest, BadParsingTest){
+    ASSERT_THROW(Character::parseUnit("notexists.json"), std::runtime_error);
 }
 
-TEST(HeroTest, NotExistingMapTest){
-    ASSERT_THROW(Hero::parseUnit("wrong_json.json"), std::runtime_error);
+TEST(CharacterTest, NoThrowCheck){
+    Character p1 = Character::parseUnit("units/capt.json");
+    Character p2 = Character::parseUnit("units/hulk.json");
+    
+    EXPECT_NO_THROW(p1.fightTilDeath(p2));
+}
+
+//Hero TESTS
+
+TEST(HeroTest, isHpNotNegative){
+    Hero p1 = Hero::parse("Dark_Wanderer.json");
+    Hero p2 = Hero::parse("Dark_Wanderer.json");
+    p1.fightTilDeath(p2);
+    
+    ASSERT_TRUE(p1.getHealthPoints() >= 0 and p2.getHealthPoints() >= 0);
+}
+
+TEST(HeroTest, isAdvancedHeroReallyLvlup){
+    Hero p1 = Hero::parse("Dark_Wanderer.json");
+    Hero p2 = Hero::parse("Dark_Wanderer.json");
+    for(int i=1; i<3; i++){
+        p1.fightTilDeath(p2);
+    }
+    
+    ASSERT_TRUE(p1.getLevel() > 1);
+    
+}
+
+TEST(HeroTest, isAdvancedHeroReallyGetsXP){
+    Hero p1 = Hero::parse("Dark_Wanderer.json");
+    Hero p2 = Hero::parse("Dark_Wanderer.json");
+    p1.fightTilDeath(p2);
+    p2.fightTilDeath(p1);
+    
+    ASSERT_TRUE(p1.getxp() > 0 and p2.getxp() > 0);
 }
 
 TEST(HeroTest, NoThrowCheck){
-    Hero* p1 = new Hero(Hero::parseUnit("units/capt.json"));
-    Hero* p2 = new Hero(Hero::parseUnit("units/hulk.json"));
+    Hero p1 = Hero::parse("Dark_Wanderer.json");
+    Hero p2 = Hero::parse("Dark_Wanderer.json");
     
-    EXPECT_NO_THROW(p1->Battle(p2));
-}
-
-//ADVANCEDHERO TESTS
-
-TEST(AdvancedHeroTest, isHpNotNegative){
-    AdvancedHero* p1 = new AdvancedHero(AdvancedHero::parseUnit("units/capt.json"));
-    AdvancedHero* p2 = new AdvancedHero(AdvancedHero::parseUnit("units/hulk.json"));
-    p1->advancedBattle(p2);
-    
-    ASSERT_TRUE(p1->getHP() >= 0 and p2->getHP() >= 0);
-}
-
-TEST(AdvancedHeroTest, isAdvancedHeroReallyLvlup){
-    AdvancedHero* p1 = new AdvancedHero(AdvancedHero::parseUnit("units/capt.json"));
-    AdvancedHero* p2 = new AdvancedHero(AdvancedHero::parseUnit("units/hulk.json"));
-    for(int i=1; i<3; i++){
-        p1->advancedDamage(p2);
-    }
-    
-    ASSERT_TRUE(p1->getLvl() > 1);
-    
-}
-
-TEST(AdvancedHeroTest, isAdvancedHeroReallyGetsXP){
-    AdvancedHero* p1 = new AdvancedHero(AdvancedHero::parseUnit("units/capt.json"));
-    AdvancedHero* p2 = new AdvancedHero(AdvancedHero::parseUnit("units/hulk.json"));
-    p1->advancedDamage(p2);
-    p2->advancedDamage(p1);
-    
-    ASSERT_TRUE(p1->getxp() > 0 and p2->getxp() > 0);
-}
-
-TEST(AdvancedHeroTest, NoThrowCheck){
-    AdvancedHero* p1 = new AdvancedHero(AdvancedHero::parseUnit("units/capt.json"));
-    AdvancedHero* p2 = new AdvancedHero(AdvancedHero::parseUnit("units/hulk.json"));
-    
-    EXPECT_NO_THROW(p1->advancedBattle(p2));
+    EXPECT_NO_THROW(p1.fightTilDeath(p2));
 }
 
 

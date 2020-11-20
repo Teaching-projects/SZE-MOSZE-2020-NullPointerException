@@ -1,0 +1,11 @@
+{
+    "name" : "Superman",
+    "base_health_points" : 100,
+    "base_damage" : 10,
+    "base_attack_cooldown" : 1.5,
+    "experience_per_level" : 50,
+    "health_point_bonus_per_level" : 20,
+    "damage_bonus_per_level" : 5,
+    "cooldown_multiplier_per_level": 0.8
+}
+

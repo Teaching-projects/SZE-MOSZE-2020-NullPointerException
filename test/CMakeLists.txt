@@ -6,5 +6,6 @@ include_directories(${GTEST_INCLUDE_DIRS})
 
 
 # and the GTest and pthread library
-add_executable(runTests unit_test.cpp ../JsonParser.cpp ../Hero.cpp ../AdvancedHero.cpp)
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++17")
+add_executable(runTests unit_test.cpp ../JSON.cpp ../Character.cpp ../Hero.cpp)
 target_link_libraries(runTests ${GTEST_LIBRARIES} pthread)

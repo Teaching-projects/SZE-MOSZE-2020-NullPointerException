@@ -1,6 +1,41 @@
-Captain America wins. Remaining HP: 322
-Captain America wins. Remaining HP: 220
-Captain America wins. Remaining HP: 428
-Hulk wins. Remaining HP: 550
-Hulk wins. Remaining HP: 550
-Captain America wins. Remaining HP: 220
+Prince Aidan of Khanduras(1) vs Fallen
+Prince Aidan of Khanduras(1) vs Fallen
+Prince Aidan of Khanduras(1) vs Zombie
+Prince Aidan of Khanduras(1) vs Fallen
+Prince Aidan of Khanduras(2) vs Fallen
+Prince Aidan of Khanduras(2) vs Zombie
+Prince Aidan of Khanduras(2) vs Fallen
+Prince Aidan of Khanduras(3) vs Blood Raven
+The hero won.
+Prince Aidan of Khanduras: LVL8
+   HP: 57/65
+  DMG: 10
+  ACD: 0.526127
+Prince Aidan of Khanduras(1) vs Blood Raven
+The hero died.
+Prince Aidan of Khanduras: LVL1
+   HP: 0/30
+  DMG: 3
+  ACD: 1.1
+Batman(1) vs Captain America
+Batman(6) vs Hulk
+Batman(31) vs Iron Man
+The hero won.
+Batman: LVL36
+   HP: 500/500
+  DMG: 190
+  ACD: 0.0250316
+Superman(1) vs Captain America
+The hero died.
+Superman: LVL1
+   HP: 0/100
+  DMG: 10
+  ACD: 1.5
+Wonder Woman(1) vs Captain America
+Wonder Woman(4) vs Hulk
+Wonder Woman(21) vs Iron Man
+The hero won.
+Wonder Woman: LVL24
+   HP: 560/560
+  DMG: 365
+  ACD: 0.000328425
