@@ -8,10 +8,9 @@ on:
 jobs:
   doxygen:
     runs-on: ubuntu-latest
+    container: gradden/mosze-doxy:latest
     steps:
       - uses: actions/checkout@master
-      - run: sudo apt-get install doxygen
-      - run: sudo apt-get install graphviz
       - run: make documentation
       - name: Push git subdir as branch
 
