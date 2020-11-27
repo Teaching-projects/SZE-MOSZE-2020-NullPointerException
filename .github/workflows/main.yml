@@ -6,12 +6,11 @@ on:
 jobs:
   build:    
     runs-on: ubuntu-latest
+    container: gradden/test:latest
     steps:
       - uses: actions/checkout@v2
       - run: g++-10 -std=c++17 *.cpp -lstdc++fs
       - run: make io_diff_check
-      - name: Install tools
-        run: sudo apt-get install -y valgrind cppcheck
       - name: Cppcheck report
         run: make sca
       - name: Artifacting
